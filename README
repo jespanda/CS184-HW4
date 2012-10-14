@@ -1,0 +1,51 @@
+README for Jessica Pan and Eber Peretto
+
+Minimum requirements
+===================================================
+Object created by hand:
+Object loaded from a suitable format:
+All placement and scaling by hand:
+Two objects must be textured with a suitable image:
+One shiny object:
+One dull object:
+One directional light:
+One object instantiated more than once:
+At least half of the objects must have correct normals:
+Double buffering:
+Hidden surface elimination:
+Perspective projection:
+Mechanism for getting rid of textures:
+
+Capabilities:
+---------------------------------------------------
+Allow the viewer to move about scene:
+    By mouse:
+    By keyboard:
+One object constantly animated:
+User must be able to:
+    move forward:
+    move backward:
+    zoom:
+    translate:
+    use mouse:
+    use keyboard:
+    
+Extra Credit
+====================================================
+Shading Control:
+Programmable Shaders:
+Refelctions and Refractions:
+Shadows:
+Environment Maps:
+Advanced Image-Based Techniques:
+Ray Tracing:
+Global Illumination:
+Animated Textures:
+Parametric or curved Surfaces:
+Hierarchical Scene Grapha nd OBject Instancing:
+Level of Detail:
+Culling to maintain performance:
+Particle Effects:
+Procedural Modeling:
+Physically based Animation/Colllision Detection:
+Anything else:

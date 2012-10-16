@@ -13,28 +13,27 @@ camera 0 -2 2 0 0 0 0 1 1 30.0
 light 0.6 0 0.1 0 1 0.5 0 1  
 light 0 -0.6 0.1 1 0.5 0.5 1 1 
 
+
 # I do a global transform to move this down a little 
 # A good use of matrix stacks and hierarchy 
 pushTransform 
 translate 0 0 -0.2 
 
 # Materials first 
-  ambient 0.2 0.2 0.2 1 
-  diffuse 0.5 0.5 0.5 1
-  specular 1 1 1 1
+  #ambient 0.2 0.2 0.2 1 
+  #diffuse 0.5 0.5 0.5 1
+  #specular 1 0 1 1
   shininess 100
-# Do all object transforms within a push/pop
-  pushTransform 
-        rotate 1 0 0 0
-  popTransform
 
 pushTransform
-	translate -0.8 0 0
+	translate -0.4 -0.1 0
+
+# ###########################################################################Table
 
 # Table top(white but now with shading)
 # Materials first.  We don't change specular and shininess
-  ambient 0 0 0 1
-  diffuse 1 0 0 1 
+  #ambient 0 0 0 1
+  diffuse 0.623529 0.623529 0.372549 1 
   pushTransform
         rotate 10 0 0 130
         scale 1 1 0.025 
@@ -42,7 +41,7 @@ pushTransform
   popTransform
 
 # Table Pillar 1 
-  diffuse 1 0 0 1 
+  diffuse 0.623529 0.623529 0.372549 1 
   pushTransform 
         rotate 10 0 0 130
         translate -0.4 -0.4 0
@@ -52,7 +51,7 @@ pushTransform
   popTransform
 
 # Table Pillar 2 
-  diffuse 1 0 0 1 
+  diffuse 0.623529 0.623529 0.372549 1 
   pushTransform 
        rotate 10 0 0 130
        translate -0.4 0.4 0
@@ -62,7 +61,7 @@ pushTransform
   popTransform
 
 # Table Pillar 3 
-  diffuse 1 0 0 1 
+  diffuse 0.623529 0.623529 0.372549 1 
   pushTransform 
        rotate 10 0 0 130
        translate 0.4 0.4 0
@@ -72,7 +71,7 @@ pushTransform
   popTransform
 
 # Table Pillar 4 
-  diffuse 1 0 0 1 
+  diffuse 0.623529 0.623529 0.372549 1 
   pushTransform 
        rotate 10 0 0 130
        translate 0.4 -0.4 0
@@ -81,13 +80,79 @@ pushTransform
         #cube 1.0 
   popTransform
 
+#pushTransform
+#	translate 1.3 0 0
+
+# ##############################################################################Bed 
+
+# Bed Top
+   
+  pushTransform
+        rotate 10 0 0 130
+        
+        pushTransform #Pillow
+        	diffuse 1 1 1 1
+        	scale .3 .6 .11
+        	translate -2.6 0 -1.6
+        	cube 1.0
+        popTransform
+        
+        diffuse 0.623529 0.623529 0.372549 1
+        scale 2 1 0.25 
+        cube 1.0
+        pushTransform #Pillow
+        	
+        	cube 1.0
+        popTransform 
+  popTransform
+
+# Bed Pillar 1 
+  diffuse 0.623529 0.623529 0.372549 1 
+  pushTransform 
+        rotate 10 0 0 130
+        translate -0.95 -0.45 0
+        scale 0.1 0.1 .4
+        translate 0 0 0.5
+        cube 1.0 
+  popTransform
+
+# Bed Pillar 2 
+  diffuse 0.623529 0.623529 0.372549 1 
+  pushTransform 
+       rotate 10 0 0 130
+       translate -0.95 0.45 0
+       scale 0.1 0.1 .4
+       translate 0 0 0.5
+       cube 1.0 
+  popTransform
+
+# Bed Pillar 3 
+  diffuse 0.623529 0.623529 0.372549 1 
+  pushTransform 
+       rotate 10 0 0 130
+       translate 0.95 0.45 0
+        scale 0.1 0.1 .4
+        translate 0 0 0.5
+        cube 1.0 
+  popTransform
+
+# Bed Pillar 4 
+  diffuse 0.623529 0.623529 0.372549 1 
+  pushTransform 
+       rotate 10 0 0 130
+       translate 0.95 -0.45 0
+        scale 0.1 0.1 .4
+        translate 0 0 0.5
+        cube 1.0 
+  popTransform
+
 pushTransform
 	translate 1.3 0 0
 
+# #########################################################################Chair
+
 # Chair top
-# Materials first.  We don't change specular and shininess
-  ambient 0 0 0 1
-  diffuse 1 0 0 1 
+  diffuse 0.623529 0.623529 0.372549 1 
   pushTransform
         rotate 10 0 0 130
         scale .5 .5 0.025 
@@ -103,7 +168,6 @@ pushTransform
   popTransform
 
 # Chair Pillar 1 
-  diffuse 1 0 0 1 
   pushTransform 
         rotate 10 0 0 130
         translate -0.2 -0.2 0
@@ -116,7 +180,6 @@ pushTransform
   popTransform
 
 # Chair Pillar 2 
-  diffuse 1 0 0 1 
   pushTransform 
        rotate 10 0 0 130
        translate -0.2 0.2 0
@@ -126,7 +189,6 @@ pushTransform
   popTransform
 
 # Chair Pillar 3 
-  diffuse 1 0 0 1 
   pushTransform 
        rotate 10 0 0 130
        translate 0.2 0.2 0
@@ -136,7 +198,6 @@ pushTransform
   popTransform
 
 # Chair Pillar 4 
-  diffuse 1 0 0 1 
   pushTransform 
        rotate 10 0 0 130
        translate 0.2 -0.2 0

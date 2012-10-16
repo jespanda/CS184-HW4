@@ -5,7 +5,8 @@
 
 # Set the scene size and camera location 
 size 1500 1500
-camera 0 -2 2 0 0 0 0 1 1 30.0
+#camera 0 -2 2 0 0 0 0 1 1 30.0
+camera 0 0 4 0 0 0 0 1 1 30.0
 
 # lights.  A single point and directional light
 # Note that your program must support up to 10 lights
@@ -88,8 +89,16 @@ pushTransform
 # Bed Top
    
   pushTransform
+        diffuse 0.623529 0.623529 0.372549 1
         rotate 10 0 0 130
         
+         # Bed Top Top 
+ 		 pushTransform
+        	scale .06 .86 .11
+        	translate -16 0 -3.7
+        	cube 1.0
+  		popTransform
+  		
         pushTransform #Pillow
         	diffuse 1 1 1 1
         	scale .3 .6 .11
@@ -97,13 +106,8 @@ pushTransform
         	cube 1.0
         popTransform
         
-        diffuse 0.623529 0.623529 0.372549 1
         scale 2 1 0.25 
-        cube 1.0
-        pushTransform #Pillow
-        	
-        	cube 1.0
-        popTransform 
+        cube 1.0 
   popTransform
 
 # Bed Pillar 1 
@@ -111,8 +115,15 @@ pushTransform
   pushTransform 
         rotate 10 0 0 130
         translate -0.95 -0.45 0
-        scale 0.1 0.1 .4
-        translate 0 0 0.5
+        
+        pushTransform # Bed Top Pillar 1
+        	scale 0.05 0.05 .4
+       		 translate -0.2 -0.1 -0.7
+       		 cube 1.0 
+        popTransform        
+        
+        scale 0.1 0.1 .3
+        translate 0 0 0.9
         cube 1.0 
   popTransform
 
@@ -121,8 +132,15 @@ pushTransform
   pushTransform 
        rotate 10 0 0 130
        translate -0.95 0.45 0
-       scale 0.1 0.1 .4
-       translate 0 0 0.5
+        
+        pushTransform # Bed Top Pillar 1
+       		 scale 0.05 0.05 .4
+       		 translate -0.2 0.1 -0.7
+       		 cube 1.0 
+        popTransform 
+        
+       scale 0.1 0.1 .3
+       translate 0 0 .9
        cube 1.0 
   popTransform
 
@@ -130,8 +148,8 @@ pushTransform
   diffuse 0.623529 0.623529 0.372549 1 
   pushTransform 
        rotate 10 0 0 130
-       translate 0.95 0.45 0
-        scale 0.1 0.1 .4
+       translate 0.95 0.45 0.12
+        scale 0.1 0.1 .3
         translate 0 0 0.5
         cube 1.0 
   popTransform
@@ -140,8 +158,8 @@ pushTransform
   diffuse 0.623529 0.623529 0.372549 1 
   pushTransform 
        rotate 10 0 0 130
-       translate 0.95 -0.45 0
-        scale 0.1 0.1 .4
+       translate 0.95 -0.45 0.12
+        scale 0.1 0.1 .3
         translate 0 0 0.5
         cube 1.0 
   popTransform
@@ -173,10 +191,10 @@ pushTransform
         translate -0.2 -0.2 0
         scale 0.05 0.05 .4
         translate 0 0 0.5
-       # cube 1.0 
+     #   cube 1.0 
      # Chair Top Pillar 1   
         translate 0 0 -1
-       # cube 1.0
+     #   cube 1.0
   popTransform
 
 # Chair Pillar 2 
@@ -185,7 +203,7 @@ pushTransform
        translate -0.2 0.2 0
        scale 0.05 0.05 .4
        translate 0 0 0.5
-      # cube 1.0 
+     #  cube 1.0 
   popTransform
 
 # Chair Pillar 3 
@@ -194,7 +212,7 @@ pushTransform
        translate 0.2 0.2 0
         scale 0.05 0.05 .4
         translate 0 0 0.5
-       # cube 1.0 
+      #  cube 1.0 
   popTransform
 
 # Chair Pillar 4 
@@ -203,10 +221,10 @@ pushTransform
        translate 0.2 -0.2 0
         scale 0.05 0.05 .4
         translate 0 0 0.5
-       # cube 1.0 
+      #  cube 1.0 
    # Chair Top Pillar 2 
         translate 0 0 -1
-    #    cube 1.0
+      #  cube 1.0
   popTransform
 		
 popTransform

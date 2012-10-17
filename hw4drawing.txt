@@ -58,7 +58,7 @@ pushTransform
        translate -0.4 0.4 0
        scale 0.1 0.1 .5
        translate 0 0 0.5
-       #cube 1.0 
+       cube 1.0 
   popTransform
 
 # Table Pillar 3 
@@ -68,7 +68,7 @@ pushTransform
        translate 0.4 0.4 0
         scale 0.1 0.1 .5
         translate 0 0 0.5
-        #cube 1.0 
+        cube 1.0 
   popTransform
 
 # Table Pillar 4 
@@ -78,7 +78,7 @@ pushTransform
        translate 0.4 -0.4 0
         scale 0.1 0.1 .5
         translate 0 0 0.5
-        #cube 1.0 
+        cube 1.0 
   popTransform
 
 pushTransform
@@ -91,7 +91,7 @@ pushTransform
   pushTransform
         rotate 10 0 0 130
         scale .5 .5 0.025 
-        #cube 1.0 
+        cube 1.0 
   popTransform
   
  # Chair Top Top 
@@ -99,7 +99,7 @@ pushTransform
   	translate 0 0.3 0
   	rotate 10 0 0 40
     scale .4 .25 0.025 
-    #cube 1.0 
+    cube 1.0 
   popTransform
 
 # Chair Pillar 1 
@@ -122,7 +122,7 @@ pushTransform
        translate -0.2 0.2 0
        scale 0.05 0.05 .4
        translate 0 0 0.5
-      # cube 1.0 
+       cube 1.0 
   popTransform
 
 # Chair Pillar 3 
@@ -132,7 +132,7 @@ pushTransform
        translate 0.2 0.2 0
         scale 0.05 0.05 .4
         translate 0 0 0.5
-       # cube 1.0 
+        cube 1.0 
   popTransform
 
 # Chair Pillar 4 
@@ -142,10 +142,10 @@ pushTransform
        translate 0.2 -0.2 0
         scale 0.05 0.05 .4
         translate 0 0 0.5
-       # cube 1.0 
+        cube 1.0 
    # Chair Top Pillar 2 
         translate 0 0 -1
-    #    cube 1.0
+        cube 1.0
   popTransform
 		
 popTransform

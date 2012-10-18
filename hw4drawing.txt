@@ -1,24 +1,41 @@
 # Set the scene size and camera location 
 size 1500 1500
-camera 3 0 5 1 0 0 0 1 1 30.0
+camera 3 -3 5 0 0 0 0 1 1 26.0
 
 # lights.  A single point and directional light
 
 light 0.6 0 0.1 0 1 0.5 0 1  
 light 0 -0.6 0.1 1 0.5 0.5 1 1 
+light -0.6 0 -0.1 0 1 0.5 0 1  
+light 0.6 0 -0.1 0 1 0.5 0 1  
+light -0.6 0 0.1 0 1 0.5 0 1
+
+light -0.6 2 0.1 0 1 0.5 0.9 1
+light -0.6 -2 0.1 0 1 0.1 0.1 1  
+
 
 # Global transforms
 
 pushTransform 
-translate -0.4 -0.1 -0.2 
   shininess 100
 
+# ##########################################################################Floor	
+	
+	pushTransform
+		diffuse 0 0.6 0.8 1
+		translate 0 -0.5 -0.1
+		rotate 20 0 0 40
+		scale 6 .1 4
+		cube 1.0
+	popTransform
+	
 # ###########################################################################Table
 
-# Table top(white but now with shading)
 pushTransform
   diffuse 0.623529 0.623529 0.372549 1 
-  translate 2.3 0 0
+  translate 2.3 0.1 0
+  
+ # Table top(white but now with shading)
   pushTransform
         rotate 10 0 0 130
         scale 1 1 0.025 
@@ -145,14 +162,12 @@ pushTransform
 
 popTransform
 
-pushTransform
-	translate 1.5 0 0
-
 # #########################################################################Chair
 
 # Chair top
  pushTransform 
-  diffuse 0.623529 0.623529 0.372549 1 
+  diffuse 0.623529 0.623529 0.372549 1
+  translate 2.3 .29 -0.4
   
   pushTransform
         rotate 10 0 0 130
@@ -210,8 +225,7 @@ pushTransform
         translate 0 0 -1
       	cube 1.0
   popTransform
-		
-popTransform
+
 popTransform
 
 # Undo global transform

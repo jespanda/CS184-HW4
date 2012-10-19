@@ -2,4 +2,4 @@
 clear
 make clean
 make
-./transforms test.txt
+./transforms demo.txt

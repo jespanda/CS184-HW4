@@ -1,6 +1,6 @@
 # Set the scene size and camera location 
 size 1500 1500
-camera 3 -3 5 0 0 0 0 1 1 26.0
+camera 5 -5 9 0 0 0 0 1 1 26.0
 
 # lights.  A single point and directional light
 
@@ -18,16 +18,18 @@ light -0.6 -2 0.1 0 1 0.1 0.1 1
 
 pushTransform 
   shininess 100
+  translate 0 -1 0
 
-# ##########################################################################Floor	
+# #########################################################################
+#Floor	
 	
-	pushTransform
-		diffuse 0 0.6 0.8 1
-		translate 0 0 0
-		rotate 20 0 0 40
-		scale 6 .1 4
-		cube 1.0
-	popTransform
+pushTransform
+    diffuse 0 0.6 0.8 1
+	translate 0 0 0
+	rotate 20 0 0 40
+	scale 6 .1 4
+	cube 1.0
+popTransform
 	
 # ##########################################################################
 
@@ -77,22 +79,35 @@ pushTransform
   popTransform
 popTransform
 
-# ############################################################################Walls
+# ##########################################################################
 
-	#Experimental Wall???????
+#Walls
 
 pushTransform
     diffuse 0.623529 0.623529 0.372549 1
-    translate -3 0 0
+    rotate 10 0 0 130
     
-    #Bottom Row 1
+    #Left Wall
     pushTransform
-    	rotate 10 0 0 130
-    	scale .02 3.5 1.0
-    	translate 0 0 0
+    	translate -3 0 -1.2
+        scale .02 4 2.5
     	cube 1.0
     popTransform
-
+    
+    #Right Wall
+    pushTransform
+    	translate 3 0 -1.2
+        scale .02 4 2.5
+    	cube 1.0
+    popTransform
+    
+    #Back Wall
+    pushTransform
+        translate 0 -2 -1.2
+        scale 6 .02 2.5
+        cube 1.0
+    popTransform
+popTransform
 
 # ##########################################################################
 
@@ -124,8 +139,7 @@ pushTransform
        popTransform
        
 popTransform
-        
-popTransform	
+        	
 # ##############################################################################
 # Bed   
 pushTransform

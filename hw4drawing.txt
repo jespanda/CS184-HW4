@@ -100,10 +100,10 @@ pushTransform
 
 pushTransform
        diffuse 0.923529 0.623529 0.372549 1
-       
+       rotate 1 0 0 40
+
        # Bottom
        pushTransform
-               rotate 1 0 0 40
                translate -2.84 1 1
                scale .3 .03 1.5
                cube 1.0
@@ -111,7 +111,6 @@ pushTransform
        
        # Middle
        pushTransform
-               rotate 1 0 0 40
                translate -2.84 .5 1
                scale .3 .03 1.5
                cube 1.0
@@ -119,7 +118,6 @@ pushTransform
        
        # Top
        pushTransform
-               rotate 1 0 0 40
                translate -2.84 1.5 1
                scale .3 .03 1.5
                cube 1.0

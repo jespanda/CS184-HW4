@@ -22,7 +22,7 @@ using namespace std ;
 #define MAINPROGRAM 
 #include "variables.h" 
 #include "readfile.h" // prototypes for readfile.cpp  
-void display(void) ;  // prototype for display function.  
+void display(void) ;  // prototype for display function. 
 
 Grader grader;
 bool allowGrader = false;
@@ -120,7 +120,7 @@ void keyboard(unsigned char key, int x, int y) {
         case 's':
                 transop = scale ; 
                 std::cout << "Operation is set to Scale\n" ; 
-                break ;         
+                break ;
         }
 	glutPostRedisplay();
 }

@@ -26,6 +26,7 @@ void display(void) ;  // prototype for display function.
 
 Grader grader;
 bool allowGrader = false;
+bool switchOn = false;
 
 // Uses the Projection matrices (technically deprecated) to set perspective 
 // We could also do this in a more modern fashion with glm.  
@@ -119,7 +120,7 @@ void keyboard(unsigned char key, int x, int y) {
         case 's':
                 transop = scale ; 
                 std::cout << "Operation is set to Scale\n" ; 
-                break ; 
+                break ;         
         }
 	glutPostRedisplay();
 }

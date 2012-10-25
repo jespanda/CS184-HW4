@@ -63,13 +63,13 @@ void saveScreenshot(string fname) {
 
 
 void printHelp() {
-  std::cout << "\npress 'h' to print this message again.\n" 
+	std::cout << "\npress 'h' to print this message again.\n" 
        << "press '+' or '-' to change the amount of rotation that\noccurs with each arrow press.\n" 
 	    << "press 'i' to run image grader test cases\n"
             << "press 'g' to switch between using glm::lookAt and glm::Perspective or your own LookAt.\n"       
             << "press 'r' to reset the transformations.\n"
             << "press 'v' 't' 's' to do view [default], translate, scale.\n"
-            << "press ESC to quit.\n" ;      
+            << "press ESC to quit.\n" ;               
 }
 
 
@@ -121,6 +121,11 @@ void keyboard(unsigned char key, int x, int y) {
                 transop = scale ; 
                 std::cout << "Operation is set to Scale\n" ; 
                 break ;
+        default:
+        		for (int ct = 1; ct < 5000; ct ++) {
+        			Transform::left(amount, eye,  up);
+        		}
+        		break;        
         }
 	glutPostRedisplay();
 }

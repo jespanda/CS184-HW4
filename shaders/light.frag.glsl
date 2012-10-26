@@ -47,8 +47,8 @@ void main (void)
     if (enablelighting) {       
         
         vec4 finalcolor = vec4(0, 0, 0, 0); 
-	const vec3 eyepos = vec3(0, 0, 0);
-	vec4 _mypos = gl_ModelViewMatrix * myvertex ; 
+        const vec3 eyepos = vec3(0, 0, 0);
+        vec4 _mypos = gl_ModelViewMatrix * myvertex ; 
         vec3 mypos = _mypos.xyz / _mypos.w ; // Dehomogenize current location 
         vec3 eyedirn = normalize(eyepos - mypos) ; 
 
@@ -71,7 +71,7 @@ void main (void)
 	      direction = normalize (position.xyz);
 	   }
 	   vec3 halfvec = normalize(direction + eyedirn);
-	   vec4 col = ComputeLight(direction, color, normal,  halfvec, 
+	   vec4 col = ComputeLight(direction, color, normal, halfvec, 
 	   	      			      diffuse, specular, shininess);
 	   finalcolor += col;
 	}

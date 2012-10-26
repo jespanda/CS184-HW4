@@ -180,7 +180,7 @@ int main(int argc, char* argv[]) {
   	FreeImage_Initialise();
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-	glutCreateWindow("HW2: Scene Viewer");
+	glutCreateWindow("HW4: Scene Viewer");
 	init();
         readfile(argv[1]) ; 
 	glutDisplayFunc(display);

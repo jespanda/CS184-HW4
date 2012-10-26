@@ -97,7 +97,7 @@ popTransform
 #Walls
 
 pushTransform
-    diffuse 0 0 0 1
+    diffuse 0 0 1 0
     rotate 10 0 0 130
     
     #Left Wall

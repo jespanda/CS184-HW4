@@ -71,8 +71,14 @@ void printHelp() {
             << "press 'v' 't' 's' to do view [default], translate, scale.\n"
             << "press ESC to quit.\n" ;               
 }
+//######################################
+GLint animate = 0;
 
-
+void animateBall(void){
+		Transform::left(amount, eye,  up);
+        glutPostRedisplay();
+}
+//######################################
 void keyboard(unsigned char key, int x, int y) {
 	switch(key) {
 	case '+':
@@ -121,11 +127,16 @@ void keyboard(unsigned char key, int x, int y) {
                 transop = scale ; 
                 std::cout << "Operation is set to Scale\n" ; 
                 break ;
-        default:
-        		for (int ct = 1; ct < 5000; ct ++) {
-        			Transform::left(amount, eye,  up);
-        		}
-        		break;        
+        //##################################################
+        case 'x':
+        		animate = !animate ;
+				if (animate) glutIdleFunc(animateBall) ;
+				else glutIdleFunc(NULL) ;		
+        		break;
+        case 'p':
+        		//std::cout << indexOfSwitch;
+        		break;		
+        //##################################################		
         }
 	glutPostRedisplay();
 }

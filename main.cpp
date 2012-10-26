@@ -63,16 +63,22 @@ void saveScreenshot(string fname) {
 
 
 void printHelp() {
-  std::cout << "\npress 'h' to print this message again.\n" 
+	std::cout << "\npress 'h' to print this message again.\n" 
        << "press '+' or '-' to change the amount of rotation that\noccurs with each arrow press.\n" 
 	    << "press 'i' to run image grader test cases\n"
             << "press 'g' to switch between using glm::lookAt and glm::Perspective or your own LookAt.\n"       
             << "press 'r' to reset the transformations.\n"
             << "press 'v' 't' 's' to do view [default], translate, scale.\n"
-            << "press ESC to quit.\n" ;      
+            << "press ESC to quit.\n" ;               
 }
+//######################################
+GLint animate = 0;
 
-
+void animateBall(void){
+		Transform::left(amount, eye,  up);
+        glutPostRedisplay();
+}
+//######################################
 void keyboard(unsigned char key, int x, int y) {
 	switch(key) {
 	case '+':
@@ -121,6 +127,16 @@ void keyboard(unsigned char key, int x, int y) {
                 transop = scale ; 
                 std::cout << "Operation is set to Scale\n" ; 
                 break ;
+        //##################################################
+        case 'x':
+        		animate = !animate ;
+				if (animate) glutIdleFunc(animateBall) ;
+				else glutIdleFunc(NULL) ;		
+        		break;
+        case 'p':
+        		//std::cout << indexOfSwitch;
+        		break;		
+        //##################################################		
         }
 	glutPostRedisplay();
 }

@@ -1,8 +1,3 @@
-/*****************************************************************************/
-/* This is the program skeleton for homework 2 in CS 184 by Ravi Ramamoorthi */
-/* Extends HW 1 to deal with shading, more transforms and multiple objects   */
-/*****************************************************************************/
-
 
 #include <iostream>
 #include <string>
@@ -182,7 +177,7 @@ void specialKey(int key, int x, int y) {
 		  	}
           }
 //############################################################################################################################          		
-          else if (transop == scale) sy += amount * 0.01 ; 
+         // else if (transop == scale) sy += amount * 0.01 ; 
           else if (transop == translate) ty += amount * 0.01 ; 
           break;
 	case 102: //right
@@ -258,6 +253,10 @@ int main(int argc, char* argv[]) {
 	}
 
 	printHelp();
+//############################################################################################################################	
+	Transform::up(amount,  eye,  up);
+	ty -= (amount * 0.01)*3 ;
+//############################################################################################################################
 	glutMainLoop();
 	FreeImage_DeInitialise();
 	return 0;

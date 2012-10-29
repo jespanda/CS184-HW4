@@ -2,6 +2,7 @@
 size 1500 1500
 
 #camera 5 -5 9 0 0 0 0 1 1 26.0 #camera outside the room
+
 camera 0 -1 1 0 0 0 0 1 1 26.0  #camera inside the room
 
 # lights
@@ -30,7 +31,7 @@ pushTransform
 pushTransform
     diffuse .2 .2 .2 1
 	rotate 20 0 0 40
-	scale 6 .1 4
+	scale 10 .1 8
 	cube 1.0
 popTransform
 
@@ -41,8 +42,8 @@ popTransform
 pushTransform
     diffuse .1 .1 1 1
 	rotate 10 0 0 40
-	translate 0 2.4 0
-	scale 6 .1 4
+	translate 0 3.4 0
+	scale 10 .1 8
 	cube 1.0
 popTransform
 	
@@ -51,7 +52,7 @@ popTransform
 #Table
 pushTransform
   diffuse 0.623529 0.623529 0.372549 1 
-  translate 2.3 0.1 0.2
+  translate 4.3 0.1 0.2
   
  # Table top
   pushTransform
@@ -104,29 +105,29 @@ pushTransform
     
     #Left Wall
     pushTransform
-    	translate -3 0 -1.2
-        scale .02 4 2.5
+    	translate -5 0 -1.7
+        scale .02 8 3.5
     	cube 1.0
     popTransform
     
     #Right Wall
     pushTransform
-    	translate 3 0 -1.2
-        scale .02 4 2.5
+    	translate 5 0 -1.7
+        scale .02 8 3.5
     	cube 1.0
     popTransform
     
     #Back Wall
     pushTransform
-        translate 0 -2 -1.2
-        scale 6 .02 2.5
+        translate 0 -4 -1.7
+        scale 10 .02 3.5
         cube 1.0
     popTransform
     
     #Front Wall
     pushTransform
-        translate 0 2 -1.2
-        scale 6 .02 2.5
+        translate 0 4 -1.7
+        scale 10 .02 3.5
         cube 1.0
     popTransform
     
@@ -142,21 +143,21 @@ pushTransform
 
        # Bottom
        pushTransform
-               translate -2.84 1 1
+               translate -4.84 1 1
                scale .3 .03 1.5
                cube 1.0
        popTransform
        
        # Middle
        pushTransform
-               translate -2.84 .5 1
+               translate -4.84 .5 1
                scale .3 .03 1.5
                cube 1.0
        popTransform
        
        # Top
        pushTransform
-               translate -2.84 1.5 1
+               translate -4.84 1.5 1
                scale .3 .03 1.5
                cube 1.0
        popTransform
@@ -168,7 +169,7 @@ popTransform
 pushTransform
     diffuse 0.623529 0.623529 0.372549 1
     rotate 10 0 0 130
-    translate -1.9 -1 -.2
+    translate -3.9 -1 -.2
     
     # Bed
     pushTransform
@@ -233,7 +234,7 @@ popTransform
 pushTransform
        diffuse 0.923529 0.623529 0.372549 1
        rotate 1 0 0 40
-       translate 2.94 1.2 1
+       translate 4.94 1.2 1
        scale 1.1 0.3 0.1
        cube 0.1
 popTransform
@@ -242,7 +243,7 @@ popTransform
 pushTransform
        diffuse 0.923529 0.623529 0.372549 1
        rotate 1 0 .3 40
-       translate 3 .6 1.23
+       translate 4 .6 1.23
        scale 1.1 0.3 0.1
        #cube 0.1
 popTransform       
@@ -255,7 +256,7 @@ pushTransform
 	diffuse 1 1 1 1
 	shininess 500
 	rotate 1 0 0 40
-	translate 0 2.05 .4
+	translate 0 3.05 .4
 	sphere 0.3
 popTransform
 
@@ -268,7 +269,7 @@ pushTransform
 	# Window Frame
 	pushTransform
 		diffuse 0 1 0 1
-		translate 0 1.4 -2
+		translate 0 1.4 -4
 		scale 1 1 .025
 		cube 1.0
 	popTransform
@@ -276,7 +277,7 @@ pushTransform
 	# Window Vertical Bar
 	pushTransform
 		diffuse 0 0 0 1
-		translate 0 1.4 -1.97
+		translate 0 1.4 -3.97
 		scale 0.05 1 0.025
 		cube 1.0
 	popTransform
@@ -284,7 +285,7 @@ pushTransform
 	# Window Horizontal Bar
 	pushTransform
 		diffuse 0 0 0 1
-		translate 0 1.4 -1.97
+		translate 0 1.4 -3.97
 		scale 1 0.05 0.025
 		cube 1.0
 	popTransform
@@ -300,7 +301,7 @@ pushTransform
 	# Door Frame
 	pushTransform
 		diffuse 0 1 0 1
-		translate -0.6 1.05 2
+		translate -0.6 1.05 4
 		scale 1 2 0.025
 		cube 1.0
 	popTransform
@@ -308,7 +309,7 @@ pushTransform
 	# Door Knob Outside
 	pushTransform
 		diffuse 0.3 0.3 0.3 1
-		translate -0.95 0.9 2.03
+		translate -0.95 0.9 4.03
 		scale .3 .3 .3
 		sphere 0.1
 	popTransform
@@ -316,7 +317,7 @@ pushTransform
 	# Door Knob Outside
 	pushTransform
 		diffuse 0.3 0.3 0.3 1
-		translate -0.95 0.9 1.97
+		translate -0.95 0.9 3.97
 		scale .3 .3 .3
 		sphere 0.1
 	popTransform
@@ -328,7 +329,7 @@ popTransform
 # Chair
  pushTransform 
   diffuse 0.623529 0.623529 0.372549 1
-  translate 2.3 .29 -0.4
+  translate 4.3 .29 -0.4
 
   # Chair top
   pushTransform

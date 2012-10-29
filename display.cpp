@@ -71,6 +71,9 @@ void display() {
 	  }
             glUniform4fv(ambientcol, 1, ambient);
             glUniform4fv(diffusecol, 1, diffuse);
+            
+           //################### Coloring code glColor3f(diffuse[0],diffuse[1],diffuse[2]);
+            
             glUniform4fv(specularcol, 1, specular);
             glUniform4fv(emissioncol, 1, emission);
             glUniform1f(shininesscol, shininess);

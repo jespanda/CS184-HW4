@@ -71,14 +71,18 @@ void printHelp() {
             << "press 'v' 't' 's' to do view [default], translate, scale.\n"
             << "press ESC to quit.\n" ;               
 }
-//######################################
+//############################################################################################################################
+int upRotCounter = 0;
+int downRotCounter = 0;
+//centerinit = center;
+
 GLint animate = 0;
 
 void animateBall(void){
-		Transform::left(amount, eye,  up);
+		Transform::left(amount*0.01, eye,  up);
         glutPostRedisplay();
 }
-//######################################
+//############################################################################################################################
 void keyboard(unsigned char key, int x, int y) {
 	switch(key) {
 	case '+':
@@ -110,8 +114,11 @@ void keyboard(unsigned char key, int x, int y) {
                 exit(0) ;
                 break ;
         case 'r': // reset eye and up vectors, scale and translate. 
-		eye = eyeinit ; 
-		up = upinit ; 
+				eye = eyeinit ; 
+				up = upinit ;
+				center = centerinit;
+				upRotCounter = 0;
+				downRotCounter = 0;
                 sx = sy = 1.0 ; 
                 tx = ty = 0.0 ; 
 		break ;   
@@ -122,22 +129,36 @@ void keyboard(unsigned char key, int x, int y) {
         case 't':
                 transop = translate ; 
                 std::cout << "Operation is set to Translate\n" ; 
-                break ; 
-        case 's':
-                transop = scale ; 
-                std::cout << "Operation is set to Scale\n" ; 
                 break ;
-        //##################################################
+//############################################################################################################################
+		case 'w': //strafe forward
+				eye = eye + vec3(0,0,-0.05);
+				break;	                 
+        case 's': //strafe back
+         //       transop = scale ; 
+           //     std::cout << "Operation is set to Scale\n" ;
+    			eye = eye + vec3(0,0,0.05);
+    			break ;
+		case 'a': //strafe left
+				eye = eye + vec3(-0.1,0,0);
+				center = center + vec3(-0.1,0,0);
+				break;
+		case 'd': //strafe right
+				eye = eye + vec3(0.1,0,0);
+				center = center + vec3(0.1,0,0);
+				break;		            	
         case 'x':
         		animate = !animate ;
 				if (animate) glutIdleFunc(animateBall) ;
 				else glutIdleFunc(NULL) ;		
         		break;
         case 'p':
-        		//std::cout << indexOfSwitch;
+        		//if (switchOnn == 0) switchOnn = 1;
+				//else switchOnn = 0;
+				std::cout << indexOfObjects;
         		break;		
-        //##################################################		
-        }
+//############################################################################################################################
+        }			
 	glutPostRedisplay();
 }
 
@@ -148,22 +169,38 @@ void specialKey(int key, int x, int y) {
 	switch(key) {
 	case 100: //left
           if (transop == view) Transform::left(amount, eye,  up);
-          else if (transop == scale) sx -= amount * 0.01 ; 
+       //   else if (transop == scale) sx -= amount * 0.01 ; 
           else if (transop == translate) tx -= amount * 0.01 ; 
           break;
 	case 101: //up
-          if (transop == view) Transform::up(amount,  eye,  up);
+          if (transop == view){
+//############################################################################################################################
+		  	if (upRotCounter < 5){
+		  		Transform::up(-amount,  eye,  up);
+		  		if (downRotCounter > 0) downRotCounter --;
+		  		else upRotCounter ++;
+		  	}
+          }
+//############################################################################################################################          		
           else if (transop == scale) sy += amount * 0.01 ; 
           else if (transop == translate) ty += amount * 0.01 ; 
           break;
 	case 102: //right
           if (transop == view) Transform::left(-amount, eye,  up);
-          else if (transop == scale) sx += amount * 0.01 ; 
+      //    else if (transop == scale) sx += amount * 0.01 ; 
           else if (transop == translate) tx += amount * 0.01 ; 
           break;
 	case 103: //down
-          if (transop == view) Transform::up(-amount,  eye,  up);
-          else if (transop == scale) sy -= amount * 0.01 ; 
+          if (transop == view){
+//############################################################################################################################
+		  	if (downRotCounter < 5){
+		  		Transform::up(amount,  eye,  up);
+		  		if (upRotCounter > 0) upRotCounter --;
+		  		else downRotCounter ++;
+		  	}
+          }
+//############################################################################################################################          		
+      //    else if (transop == scale) sy -= amount * 0.01 ; 
           else if (transop == translate) ty -= amount * 0.01 ; 
           break;
 	}
@@ -195,6 +232,9 @@ int main(int argc, char* argv[]) {
 
   	FreeImage_Initialise();
 	glutInit(&argc, argv);
+//############################################################################################################################
+	switchOnn = 0;
+//############################################################################################################################	
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutCreateWindow("HW2: Scene Viewer");
 	init();

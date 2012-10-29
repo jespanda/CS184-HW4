@@ -34,7 +34,6 @@ using namespace std ;
 #include "variables.h" 
 #include "readfile.h"
 
-
 // The function below applies the appropriate transform to a 4-vector
 void matransform(stack<mat4> &transfstack, GLfloat * values) {
   mat4 transform = transfstack.top() ; 
@@ -179,9 +178,26 @@ void readfile(const char * filename) {
                 (obj -> emission)[i] = emission[i] ;
               }
               obj -> shininess = shininess ; 
+//############################################################################################################################
+			  if (switchOnn == 1){
+			  		//rightmultiply inverse rotation and translation
+			  }
+//############################################################################################################################			  
+
               obj -> transform = transfstack.top() ; 
+              
+//############################################################################################################################
+              indexOfObjects ++;
+//############################################################################################################################
+              
               if (cmd == "sphere") obj -> type = sphere ; 
-              else if (cmd == "cube") obj -> type = cube ; 
+              else if (cmd == "cube"){
+              		obj -> type = cube ;
+              		
+//############################################################################################################################
+              	    if (values[0] == 0.1) indexOfSwitch = indexOfObjects;
+//############################################################################################################################
+              }		
               else if (cmd == "teapot") obj -> type = teapot ; 
             }
             ++numobjects ; 
@@ -217,6 +233,9 @@ void readfile(const char * filename) {
             // You may want to normalize the axis (or in Transform::rotate)
             // See how the stack is affected, as above.
               vec3 axis = vec3(values[0], values[1], values[2]);
+//############################################################################################################################              
+//              if (indexOfObjects == 27) axis = vec3(1, 0, 0.3);
+//############################################################################################################################              
               mat4 rotateMatrix = mat4(Transform::rotate(values[3], axis));
               rightmultiply(rotateMatrix, transfstack);
           }
@@ -241,7 +260,8 @@ void readfile(const char * filename) {
   // Set up initial position for eye, up and amount
   // As well as booleans 
 
-        eye = eyeinit ; 
+        eye = eyeinit ;
+        centerinit = center; 
 	up = upinit ; 
 	amount = 5;
         sx = sy = 1.0 ; // scales in x and y 

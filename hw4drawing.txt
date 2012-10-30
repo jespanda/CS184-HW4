@@ -21,6 +21,13 @@ light -0.6 -2 0.1 0 1 0.1 0.1 1
 pushTransform 
   shininess 1
   translate 0 -1 0
+  
+# ########################################################################
+pushTransform
+    translate 0.0 2.0 0.0
+    scale .5 .5 .5
+    book 1.0
+popTransform
 
 # #########################################################################
 #Floor	
@@ -36,13 +43,13 @@ popTransform
 
 # Roof
 
-pushTransform
-    diffuse 1 1 1 1
-	rotate 10 0 0 40
-	translate 0 2.4 0
-	scale 6 .1 4
-	cube 1.0
-popTransform
+#pushTransform
+#    diffuse 1 1 1 1
+#	rotate 10 0 0 40
+#	translate 0 2.4 0
+#	scale 6 .1 4
+#	cube 1.0
+#popTransform
 	
 # ##########################################################################
 
@@ -97,11 +104,7 @@ popTransform
 #Walls
 
 pushTransform
-<<<<<<< HEAD
     diffuse 0 0 1 0
-=======
-    diffuse 1 1 1 1
->>>>>>> 87dbcc84c2e631bad6d2cbbaf45ccb30d7d66339
     rotate 10 0 0 130
     
     #Left Wall
@@ -376,7 +379,7 @@ popTransform
   pushTransform 
        rotate 10 0 0 130
        translate 0.2 0.2 -0.2
-        scale 0.05 0.05 .4
+       scale 0.05 0.05 .4
        cube 1.0 
   popTransform
 

@@ -48,6 +48,60 @@ void reshape(int width, int height){
 	glViewport(0, 0, w, h);
 }
 
+// objLoader (from wiki)
+void load_obj(const char* filename, vector<glm::vec4> &vertices, vector<glm::vec3> &normals,
+              vector<glm::vec2> &textures, vector<GLushort> &elements) {
+    ifstream in(filename, ios::in);
+    if (!in) { cerr << "Cannot open " << filename << endl; exit(1); }
+    
+    string line;
+    while (getline(in, line)) {
+        if (line.substr(0,2) == "v ") {
+            istringstream s(line.substr(2));
+            glm::vec4 v;
+            s >> v.x;
+            s >> v.y;
+            s >> v.z;
+            v.w = 1.0f;
+            std::cout << "This is v: " << v.x << " " << v.y << " " << v.z  << "\n";
+            vertices.push_back(v);
+        } else if (line.substr(0,3) == "vt ") {
+            istringstream s(line.substr(2));
+            glm::vec2 t;
+            s >> t.x;
+            s >> t.y;
+            textures.push_back(t);
+        } else if (line.substr(0,2) == "f ") {
+            replace(line.begin(),line.end(), '/',' ');
+            istringstream s(line.substr(2));
+            int a,b,c, d, e, f, g, i, j;
+            s >> a; s >> b; s >> c;
+            s >> d; s >> e; s >> f;
+            s >> g; s >> i; s >> j;
+            std::cout << "This is  element: " << a << " " << d << " " << g  << " " <<  "\n";
+            a--;
+            d--;
+            g--;
+            elements.push_back(a); elements.push_back(d); elements.push_back(g);
+        }
+        else if (line[0] == '#') { /* ignoring this line */ }
+        else { /* ignoring this line */ }
+    }
+    
+    normals.resize(vertices.size(), glm::vec3(0.0, 0.0, 0.0));
+    for (int i = 0; i < elements.size(); i+=3) {
+        GLushort ia = elements[i];
+        GLushort ib = elements[i+1];
+        GLushort ic = elements[i+2];
+        glm::vec3 normal = glm::normalize(glm::cross(
+                                                     glm::vec3(vertices[ib]) - glm::vec3(vertices[ia]),
+                                                     glm::vec3(vertices[ic]) - glm::vec3(vertices[ia])));
+        std::cout << "This is vertex: " << ia << " " << ib << " " << ic  << "\n";
+        normals[ia] = normals[ib] = normals[ic] = normal;
+        
+    }
+}
+
 void saveScreenshot(string fname) {
 	int pix = w * h;
 	BYTE pixels[3*pix];	
@@ -69,6 +123,7 @@ void printHelp() {
             << "press 'g' to switch between using glm::lookAt and glm::Perspective or your own LookAt.\n"       
             << "press 'r' to reset the transformations.\n"
             << "press 'v' 't' 's' to do view [default], translate, scale.\n"
+            << "press 'x' to rotate disco ball"
             << "press ESC to quit.\n" ;               
 }
 //######################################
@@ -171,6 +226,7 @@ void specialKey(int key, int x, int y) {
 }
 
 void init() {
+      load_obj("book1.obj", book_vertices, book_normals, book_textures, book_elements);
       // Initialize shaders
       vertexshader = initshaders(GL_VERTEX_SHADER, "shaders/light.vert.glsl") ;
       fragmentshader = initshaders(GL_FRAGMENT_SHADER, "shaders/light.frag.glsl") ;

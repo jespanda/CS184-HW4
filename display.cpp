@@ -13,13 +13,48 @@
 #include <deque>
 #include <stack>
 #include <GL/glut.h>
+#include <vector>
 #include "Transform.h"
-
 using namespace std ; 
 #include "variables.h"
 #include "readfile.h"
 
-// New helper transformation function to transform vector by modelview 
+// objLoader (from wiki)
+
+void drawTriangle (vec4 a, vec4 b, vec4 c){
+    glPushMatrix();
+    glBegin(GL_TRIANGLES);
+    glColor3f(1.0, 0.0, 0.0);
+    glVertex3f(a.x, a.y, a.z);
+    glColor3f(0.0, 1.0, 0.0);
+    glVertex3f(b.x, b.y, b.z);
+    glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(c.x, c.y, c.z);
+    glEnd();
+    glPopMatrix();
+}
+
+void draw_obj(vector<glm::vec4> vertices, vector<GLushort>elements){
+    for (int i=0; i<elements.size(); i+=3){
+        GLushort a = elements[i];
+        GLushort b = elements[i+1];
+        GLushort c = elements[i+2];
+        
+        //std::cout << "elements size " << elements.size() << "\n";
+        //std::cout << "faces " << a << " " << b << " " << c  << "\n";
+        //std::cout << "vertices a " << vertices[a][0] << " " << vertices[a][1] << " " << vertices[a][2] << "\n ";
+        //std::cout << "vertices b " << vertices[b][0] << " " << vertices[b][1] << " " << vertices[b][2] << "\n ";
+        //std::cout << "vertices c " << vertices[c][0] << " " << vertices[c][1] << " " << vertices[c][2] << "\n ";
+
+        vec4 vert_a = vertices[a];
+        vec4 vert_b = vertices[b];
+        vec4 vert_c = vertices[c];
+        drawTriangle(vert_a, vert_b, vert_c);
+    }
+    //glFlush();
+}
+
+// New helper transformation function to transform vector by modelview
 // May be better done using newer glm functionality.
 // Provided for your convenience.  Use is optional.  
 // Some of you may want to use the more modern routines in readfile.cpp 
@@ -88,11 +123,7 @@ void display() {
         mat4 sc(1.0) , tr(1.0), transf(1.0) ; 
         sc = Transform::scale(sx,sy,1.0) ; 
         tr = Transform::translate(tx,ty,0.0) ;
-            transf = mv*tr*sc;
-        // YOUR CODE FOR HW 2 HERE.  
-        // You need to use scale, translate and modelview to 
-        // set up the net transformation matrix for the objects.  
-        // Account for GLM issues etc.  
+        transf = mv*tr*sc;
         glLoadMatrixf(&transf[0][0]) ; 
 
         for (int i = 0 ; i < numobjects ; i++) {
@@ -122,10 +153,16 @@ void display() {
             glutSolidSphere(obj->size, tessel, tessel) ; 
           }
           else if (obj -> type == teapot) {
-	     glutSolidTeapot(obj->size) ; 
+            glutSolidTeapot(obj->size) ; 
           }
-
+          else if (obj -> type == book){
+            draw_obj(book_vertices, book_elements);
+          }
         }
+        //transf = mv*tr*sc;
+        //glLoadMatrixf(&transf[0][0]) ;
+        //draw_obj(book_vertices, book_elements);
+    
     
         glutSwapBuffers();
 }

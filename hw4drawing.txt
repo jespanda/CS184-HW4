@@ -28,7 +28,7 @@ pushTransform
 # ########################################################################
 pushTransform
     translate 0.0 2.0 0.0
-    scale .5 .5 .5
+    scale .2 .2 .2
     book 1.0
 popTransform
 

@@ -58,7 +58,7 @@ void load_obj(const char* filename, vector<glm::vec4> &vertices, vector<glm::vec
             s >> v.y;
             s >> v.z;
             v.w = 1.0f;
-            std::cout << "This is v: " << v.x << " " << v.y << " " << v.z  << "\n";
+            //std::cout << "This is v: " << v.x << " " << v.y << " " << v.z  << "\n";
             vertices.push_back(v);
         } else if (line.substr(0,3) == "vt ") {
             istringstream s(line.substr(2));
@@ -73,7 +73,6 @@ void load_obj(const char* filename, vector<glm::vec4> &vertices, vector<glm::vec
             s >> a; s >> b; s >> c;
             s >> d; s >> e; s >> f;
             s >> g; s >> i; s >> j;
-            std::cout << "This is  element: " << a << " " << d << " " << g  << " " <<  "\n";
             a--;
             d--;
             g--;
@@ -91,7 +90,6 @@ void load_obj(const char* filename, vector<glm::vec4> &vertices, vector<glm::vec
         glm::vec3 normal = glm::normalize(glm::cross(
                                                      glm::vec3(vertices[ib]) - glm::vec3(vertices[ia]),
                                                      glm::vec3(vertices[ic]) - glm::vec3(vertices[ia])));
-        std::cout << "This is vertex: " << ia << " " << ib << " " << ic  << "\n";
         normals[ia] = normals[ib] = normals[ic] = normal;
         
     }

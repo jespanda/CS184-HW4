@@ -13,8 +13,17 @@
 #define EXTERN extern 
 #endif 
 
+<<<<<<< HEAD
 #include <vector>
 
+=======
+//############################################################################################################################
+EXTERN int indexOfSwitch;
+EXTERN int indexOfObjects;
+EXTERN int switchOnn;
+EXTERN vec3 centerinit ;
+//############################################################################################################################
+>>>>>>> 6da635bdce7c67bbd02862fc7988f059886c1c8d
 EXTERN int amount; // The amount of rotation for each arrow press
 EXTERN vec3 eye; // The (regularly updated) vector coordinates of the eye 
 EXTERN vec3 up;  // The (regularly updated) vector coordinates of the up 
@@ -70,7 +79,7 @@ EXTERN struct object {
   GLfloat specular[4] ;
   GLfloat emission[4] ; 
   GLfloat shininess ;
-  mat4 transform ; 
+  mat4 transform ;
 } objects[maxobjects] ;
 
 // Variables to set uniform params for lighting fragment shader 

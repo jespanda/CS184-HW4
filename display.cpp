@@ -72,7 +72,7 @@ void transformvec (const GLfloat input[4], GLfloat output[4]) {
 }
 
 void display() {
-	glClearColor(0, 0, 1, 0);
+	glClearColor(1, 1, 1, 0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         
@@ -106,6 +106,9 @@ void display() {
 	  }
             glUniform4fv(ambientcol, 1, ambient);
             glUniform4fv(diffusecol, 1, diffuse);
+            
+           //################### Coloring code glColor3f(diffuse[0],diffuse[1],diffuse[2]);
+            
             glUniform4fv(specularcol, 1, specular);
             glUniform4fv(emissioncol, 1, emission);
             glUniform1f(shininesscol, shininess);

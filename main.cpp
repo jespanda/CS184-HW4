@@ -127,7 +127,21 @@ int downRotCounter = 0;
 GLint animate = 0;
 
 void animateBall(void){
-		Transform::left(amount*0.01, eye,  up);
+		ballRot += 0.25;
+		glColor3f(0.0,1.0,1.0) ; // Deprecated command to set the color 
+		glPushMatrix() ;
+		//  I now transform by the teapot translation for animation 
+		
+		//  The following two transforms set up and center the teapot 
+		//  Remember that transforms right-multiply the stack 
+
+		glTranslatef(0.0,0.0,0.1) ;
+		glRotatef(ballRot, 0.0, 0.0, 1.0);
+		glRotatef(90.0,1.0,0.0,0.0) ;
+		glutSolidSphere(2,20,20) ;
+		glPopMatrix() ;
+		glFlush ();
+		//glutSwapBuffers() ; 
         glutPostRedisplay();
 }
 //############################################################################################################################

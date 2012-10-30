@@ -167,8 +167,11 @@ void keyboard(unsigned char key, int x, int y) {
 				center = centerinit;
 				upRotCounter = 0;
 				downRotCounter = 0;
+				Transform::up(amount,  eye,  up);
+				Transform::left(amount*18, eye,  up);
+				ty = 0 - ((amount * 0.01)*3 );
                 sx = sy = 1.0 ; 
-                tx = ty = 0.0 ; 
+                tx = 0.0 ; 
 		break ;   
         case 'v': 
                 transop = view ;
@@ -215,15 +218,27 @@ void keyboard(unsigned char key, int x, int y) {
 
 void specialKey(int key, int x, int y) {
 	switch(key) {
+	
 	case 100: //left
-          if (transop == view) Transform::left(amount, eye,  up);
+          if (transop == view){
+          		Transform::left(amount, eye,  up);
+          		if (upRotCounter > 0){
+          			Transform::up(amount*upRotCounter,eye,up);
+          			upRotCounter = 0;
+          		}
+          		if (downRotCounter > 0){
+          			Transform::up(-(amount*downRotCounter),eye,up);
+          			downRotCounter = 0;
+          		}
+          }		
        //   else if (transop == scale) sx -= amount * 0.01 ; 
           else if (transop == translate) tx -= amount * 0.01 ; 
           break;
+          
 	case 101: //up
           if (transop == view){
 //############################################################################################################################
-		  	if (upRotCounter < 5){
+		  	if (upRotCounter < 7){
 		  		Transform::up(-amount,  eye,  up);
 		  		if (downRotCounter > 0) downRotCounter --;
 		  		else upRotCounter ++;
@@ -233,11 +248,24 @@ void specialKey(int key, int x, int y) {
          // else if (transop == scale) sy += amount * 0.01 ; 
           else if (transop == translate) ty += amount * 0.01 ; 
           break;
+          
 	case 102: //right
-          if (transop == view) Transform::left(-amount, eye,  up);
+          if (transop == view){
+          		Transform::left(-amount, eye,  up);
+          		if (upRotCounter > 0){
+          			Transform::up(amount*upRotCounter,eye,up);
+          			upRotCounter = 0;
+          		}
+          		if (downRotCounter > 0){
+          			Transform::up(-(amount*downRotCounter),eye,up);
+          			downRotCounter = 0;
+          		}
+
+          }		
       //    else if (transop == scale) sx += amount * 0.01 ; 
           else if (transop == translate) tx += amount * 0.01 ; 
           break;
+          
 	case 103: //down
           if (transop == view){
 //############################################################################################################################
@@ -309,6 +337,7 @@ int main(int argc, char* argv[]) {
 	printHelp();
 //############################################################################################################################	
 	Transform::up(amount,  eye,  up);
+	Transform::left(amount*18, eye,  up);
 	ty -= (amount * 0.01)*3 ;
 //############################################################################################################################
 	glutMainLoop();

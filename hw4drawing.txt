@@ -1,9 +1,9 @@
 # Set the scene size and camera location 
 size 1500 1500
 
-camera 5 -5 9 0 0 0 0 1 1 26.0 #camera outside the room
+#camera 5 -5 9 0 0 0 0 1 1 26.0 #camera outside the room
 
-#camera 0 -1 1 0 0 0 0 1 1 26.0  #camera inside the room
+camera 0 -1 1 0 0 0 0 1 1 26.0  #camera inside the room
 
 # lights
 
@@ -26,19 +26,38 @@ pushTransform
   translate 0 -1 0
   
 # ########################################################################
-# Book
+# Books
 pushTransform
 	rotate 10 0 0 40
 
-# Top shelf book	
+# Top shelf book 1	
 	pushTransform
-		diffuse 1 1 0 1
+		diffuse 1 .1 .1 1
 		rotate 0 0 10 90
 		translate 1.55 4.79 1.3
 		scale .09 .10 .09
 		book 1.0
 	popTransform
 
+# Top Shelf book 2
+	pushTransform
+		diffuse .1 1 .1 1
+		rotate 0 0 10 90
+		rotate 0 10 0 90
+		translate -1.1 4.8 1.67
+		scale .09 .10 .09
+		book 1.0
+	popTransform
+
+# Top Shelf Book 3	
+	pushTransform
+		diffuse .1 .1 1 1
+		rotate 0 0 10 90
+		translate 1.55 4.79 0.89
+		scale .09 .10 .09
+		book 1.0
+	popTransform
+	
 	rotate 0 10 0 90
 	
 # Middle shelf books	
@@ -50,42 +69,42 @@ pushTransform
    	popTransform
    	
 	pushTransform
-		diffuse .9 .5 .5 1
+		diffuse .1 .1 .5 1
 		translate -.55 1.22 -4.83
 		scale .09 .11 .09
    	    book 1.0
    	popTransform
    	    
 	pushTransform
-		diffuse .2 .1 .5 1
+		diffuse .7 .1 .5 1
 		translate -.7 1.22 -4.83
 		scale .09 .11 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
-		diffuse .9 .1 .5 1
+		diffuse .9 .1 .9 1
 		translate -.85 1.22 -4.83
 		scale .09 .11 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
-		diffuse .1 .5 .9 1
+		diffuse .1 .9 .9 1
 		translate -1 1.22 -4.83
 		scale .09 .11 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
-		diffuse .5 .7 .1 1
+		diffuse .5 .7 .2 1
 		translate -1.15 1.22 -4.83
 		scale .09 .11 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
-		diffuse .1 .8 .8 1
+		diffuse .1 .8 .1 1
 		translate -1.3 1.22 -4.83
 		scale .09 .11 .09
    	    book 1.0
@@ -99,7 +118,7 @@ pushTransform
    	popTransform
 
 	pushTransform
-		diffuse 0 0 .7 1
+		diffuse 1 .5 1 1
 		translate -1.6 1.22 -4.83
 		scale .09 .11 .09
    	    book 1.0
@@ -107,65 +126,65 @@ pushTransform
 
 # Bottom shelf books	
 	pushTransform
-		diffuse .5 .5 .1 1
+		diffuse .5 .2 .9 1
 		translate -.4 .72 -4.83
-		scale .09 .11 .09
+		scale .09 .111 .09
    	    book 1.0
    	popTransform
    	
 	pushTransform
-		diffuse .1 .5 .5 1
-		translate -.55 .72 -4.83
-		scale .09 .11 .09
+		diffuse .9 .9 .9 1
+		translate -.55 .73 -4.83
+		scale .09 .117 .09
    	    book 1.0
    	popTransform
    	    
 	pushTransform
-		diffuse .5 .1 .5 1
-		translate -.7 .72 -4.83
-		scale .09 .11 .09
+		diffuse 1 .7 .5 1
+		translate -.7 .71 -4.83
+		scale .09 .102 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
-		diffuse .5 .1 .5 1
-		translate -.85 .72 -4.83
-		scale .09 .11 .09
+		diffuse .5 .2 .5 1
+		translate -.85 .71 -4.83
+		scale .09 .106 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
-		diffuse .1 .5 .5 1
-		translate -1 .72 -4.83
-		scale .09 .11 .09
+		diffuse .1 .3 .8 1
+		translate -1 .73 -4.83
+		scale .09 .118 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
-		diffuse .5 .5 .1 1
-		translate -1.15 .72 -4.83
-		scale .09 .11 .09
+		diffuse .1 .7 .2 1
+		translate -1.15 .73 -4.83
+		scale .09 .113 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
-		diffuse .1 .5 .5 1
-		translate -1.3 .72 -4.83
-		scale .09 .11 .09
+		diffuse .9 .9 .5 1
+		translate -1.3 .73 -4.83
+		scale .09 .119 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
-		diffuse .5 .1 .5 1
-		translate -1.45 .72 -4.83
-		scale .09 .11 .09
+		diffuse .8 .1 .8 1
+		translate -1.45 .71 -4.83
+		scale .09 .105 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
-		diffuse .5 .5 .1 1
-		translate -1.6 .72 -4.83
-		scale .09 .11 .09
+		diffuse .5 .8 .8 1
+		translate -1.6 .73 -4.83
+		scale .09 .115 .09
    	    book 1.0
    	popTransform
 
@@ -185,15 +204,6 @@ popTransform
 
 # Roof
 
-<<<<<<< HEAD
-#pushTransform
-#    diffuse 1 1 1 1
-#	rotate 10 0 0 40
-#	translate 0 2.4 0
-#	scale 6 .1 4
-#	cube 1.0
-#popTransform
-=======
 pushTransform
     diffuse .1 .1 1 1
 	rotate 10 0 0 40
@@ -201,7 +211,6 @@ pushTransform
 	scale 10 .1 8
 	cube 1.0
 popTransform
->>>>>>> 6da635bdce7c67bbd02862fc7988f059886c1c8d
 	
 # ##########################################################################
 
@@ -256,11 +265,8 @@ popTransform
 #Walls
 
 pushTransform
-<<<<<<< HEAD
-    diffuse 0 0 1 0
-=======
+
     diffuse 0.1 0.1 1 1
->>>>>>> 6da635bdce7c67bbd02862fc7988f059886c1c8d
     rotate 10 0 0 130
     
     #Left Wall
@@ -274,21 +280,21 @@ pushTransform
     pushTransform
     	translate 5 0 -1.7
         scale .02 8 3.5
-    	#cube 1.0
+    	cube 1.0
     popTransform
     
     #Back Wall
     pushTransform
         translate 0 -4 -1.7
         scale 10 .02 3.5
-        #cube 1.0
+        cube 1.0
     popTransform
     
     #Front Wall
     pushTransform
         translate 0 4 -1.7
         scale 10 .02 3.5
-        #cube 1.0
+        cube 1.0
     popTransform
     
 popTransform

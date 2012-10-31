@@ -301,7 +301,7 @@ void specialKey(int key, int x, int y) {
 
 void init() {
       load_obj("fish.obj", fish_vertices, fish_normals, fish_textures, fish_elements);
-      load_obj("book.obj", book_vertices, book_normals, book_textures, book_elements);
+      load_obj("fish.obj", book_vertices, book_normals, book_textures, book_elements);
 
       //load_texture("wood.ppm", shaderprogram);
       // Initialize shaders

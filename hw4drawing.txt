@@ -1,9 +1,9 @@
 # Set the scene size and camera location 
 size 1500 1500
 
-#camera 5 -5 9 0 0 0 0 1 1 26.0 #camera outside the room
+camera 5 -5 9 0 0 0 0 1 1 26.0 #camera outside the room
 
-camera 0 -1 1 0 0 0 0 1 1 26.0  #camera inside the room
+#camera 0 -1 1 0 0 0 0 1 1 26.0  #camera inside the room
 
 # lights
 
@@ -28,6 +28,11 @@ pushTransform
   shininess 100
   translate 0 -1 0
   specular 0 0 0 1
+# ########################################################################
+pushTransform
+    rotate 10 0 0 40
+    fish 1.0
+popTransform
 # ########################################################################
 # Books
 pushTransform
@@ -235,7 +240,7 @@ pushTransform
 	rotate 10 0 0 40
 	translate 0 3.4 0
 	scale 10 .1 8
-	cube 1.0
+	#cube 1.0
 popTransform
 	
 # ##########################################################################
@@ -307,14 +312,14 @@ pushTransform
     pushTransform
     	translate 5 0 -1.7
         scale .02 8 3.5
-    	cube 1.0
+    	#cube 1.0
     popTransform
     
     #Back Wall
     pushTransform
         translate 0 -4 -1.7
         scale 10 .02 3.5
-        cube 1.0
+        #cube 1.0
     popTransform
     
     #Front Wall

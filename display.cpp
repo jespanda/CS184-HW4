@@ -161,6 +161,9 @@ void display() {
           else if (obj -> type == book){
             draw_obj(book_vertices, book_elements);
           }
+          else if (obj -> type == fish){
+              draw_obj(fish_vertices, fish_elements);
+          }
         }
         //transf = mv*tr*sc;
         //glLoadMatrixf(&transf[0][0]) ;

@@ -161,10 +161,12 @@ void readfile(const char * filename) {
           }
         }
 		
-		if (cmd == "animated"){
+		//if (cmd == "animated"){
 			//ballIndex = indexOfObjects + 1;
-			ballRot = 0;
-		}
+			//ballRot = 0;
+	//	}
+	
+	
         // I've left the code for loading objects in the skeleton, so 
         // you can get a sense of how this works.  
         else if (cmd == "sphere" || cmd == "cube" || cmd == "teapot" || cmd == "book") {
@@ -182,9 +184,10 @@ void readfile(const char * filename) {
                 (obj -> emission)[i] = emission[i] ;
               }
               obj -> shininess = shininess ; 
-			  if (switchOnn == 1){
+			  
+			  //if (switchOnn == 1){
 			  		//rightmultiply inverse rotation and translation
-			  }		  
+			 // }		  
 
               obj -> transform = transfstack.top() ; 
 

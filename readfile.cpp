@@ -162,7 +162,7 @@ void readfile(const char * filename) {
         }
 		
 		if (cmd == "animated"){
-			ballIndex = indexOfObjects + 1;
+			//ballIndex = indexOfObjects + 1;
 			ballRot = 0;
 		}
         // I've left the code for loading objects in the skeleton, so 

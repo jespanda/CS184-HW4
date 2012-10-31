@@ -1,16 +1,19 @@
 # Set the scene size and camera location 
 size 1500 1500
 
-#camera 5 -5 9 0 0 0 0 1 1 26.0 #camera outside the room
+camera 5 -5 9 0 0 0 0 1 1 26.0 #camera outside the room
 
-camera 0 -1 1 0 0 0 0 1 1 26.0  #camera inside the room
+#camera 0 -1 1 0 0 0 0 1 1 26.0  #camera inside the room
 
 # lights
 
 light 0 -0.03 1.75 1 0 0 1 1 #ball light (blue)
 
+light 0 1.6 0 1 1 1 1 1  #ball light (white)
 
-light 0.6 0 0.1 0 1 0.5 0 1  
+light 0.6 0 0.1 0 1 1 1 1  
+
+
 light -0.6 0 -0.1 0 1 0.5 0 1  
 light 0.6 0 -0.1 0 1 0.5 0 1  
 light -0.6 0 0.1 0 1 0.5 0 1
@@ -24,7 +27,7 @@ light -0.6 -2 0.1 0 1 0.1 0.1 1
 pushTransform 
   shininess 100
   translate 0 -1 0
-  
+  specular 0 0 0 1
 # ########################################################################
 # Books
 pushTransform
@@ -32,6 +35,7 @@ pushTransform
 
 # Top shelf book 1	
 	pushTransform
+		ambient 1 .1 .1 1
 		diffuse 1 .1 .1 1
 		rotate 0 0 10 90
 		translate 1.55 4.79 1.3
@@ -41,6 +45,7 @@ pushTransform
 
 # Top Shelf book 2
 	pushTransform
+		ambient .1 1 .1 1
 		diffuse .1 1 .1 1
 		rotate 0 0 10 90
 		rotate 0 10 0 90
@@ -51,6 +56,7 @@ pushTransform
 
 # Top Shelf Book 3	
 	pushTransform
+		ambient .1 .1 1 1
 		diffuse .1 .1 1 1
 		rotate 0 0 10 90
 		translate 1.55 4.79 0.89
@@ -62,6 +68,7 @@ pushTransform
 	
 # Middle shelf books	
 	pushTransform
+		ambient .5 .9 .1 1
 		diffuse .5 .9 .1 1
 		translate -.4 1.22 -4.83
 		scale .09 .11 .09
@@ -69,6 +76,7 @@ pushTransform
    	popTransform
    	
 	pushTransform
+		ambient .1 .1 .5 1
 		diffuse .1 .1 .5 1
 		translate -.55 1.22 -4.83
 		scale .09 .11 .09
@@ -76,6 +84,7 @@ pushTransform
    	popTransform
    	    
 	pushTransform
+		ambient .7 .1 .5 1
 		diffuse .7 .1 .5 1
 		translate -.7 1.22 -4.83
 		scale .09 .11 .09
@@ -84,12 +93,14 @@ pushTransform
 
 	pushTransform
 		diffuse .9 .1 .9 1
+		diffuse .9 .1 .9 1
 		translate -.85 1.22 -4.83
 		scale .09 .11 .09
    	    book 1.0
    	popTransform
 
 	pushTransform
+		ambient .1 .9 .9 1
 		diffuse .1 .9 .9 1
 		translate -1 1.22 -4.83
 		scale .09 .11 .09
@@ -97,6 +108,7 @@ pushTransform
    	popTransform
 
 	pushTransform
+		ambient .5 .7 .2 1
 		diffuse .5 .7 .2 1
 		translate -1.15 1.22 -4.83
 		scale .09 .11 .09
@@ -104,6 +116,7 @@ pushTransform
    	popTransform
 
 	pushTransform
+		ambient .1 .8 .1 1
 		diffuse .1 .8 .1 1
 		translate -1.3 1.22 -4.83
 		scale .09 .11 .09
@@ -111,6 +124,7 @@ pushTransform
    	popTransform
 
 	pushTransform
+		ambient .2 0 .9 1
 		diffuse .2 0 .9 1
 		translate -1.45 1.22 -4.83
 		scale .09 .11 .09
@@ -118,6 +132,7 @@ pushTransform
    	popTransform
 
 	pushTransform
+		ambient 1 .5 1 1
 		diffuse 1 .5 1 1
 		translate -1.6 1.22 -4.83
 		scale .09 .11 .09
@@ -126,6 +141,7 @@ pushTransform
 
 # Bottom shelf books	
 	pushTransform
+		ambient .5 .2 .9 1
 		diffuse .5 .2 .9 1
 		translate -.4 .72 -4.83
 		scale .09 .111 .09
@@ -133,6 +149,7 @@ pushTransform
    	popTransform
    	
 	pushTransform
+		ambient .9 .9 .9 1
 		diffuse .9 .9 .9 1
 		translate -.55 .73 -4.83
 		scale .09 .117 .09
@@ -140,6 +157,7 @@ pushTransform
    	popTransform
    	    
 	pushTransform
+		ambient 1 .7 .5 1
 		diffuse 1 .7 .5 1
 		translate -.7 .71 -4.83
 		scale .09 .102 .09
@@ -147,6 +165,7 @@ pushTransform
    	popTransform
 
 	pushTransform
+		ambient .5 .2 .5 1
 		diffuse .5 .2 .5 1
 		translate -.85 .71 -4.83
 		scale .09 .106 .09
@@ -154,6 +173,7 @@ pushTransform
    	popTransform
 
 	pushTransform
+		ambient .1 .3 .8 1
 		diffuse .1 .3 .8 1
 		translate -1 .73 -4.83
 		scale .09 .118 .09
@@ -161,6 +181,7 @@ pushTransform
    	popTransform
 
 	pushTransform
+		ambient .1 .7 .2 1
 		diffuse .1 .7 .2 1
 		translate -1.15 .73 -4.83
 		scale .09 .113 .09
@@ -168,6 +189,7 @@ pushTransform
    	popTransform
 
 	pushTransform
+		ambient .9 .9 .5 1
 		diffuse .9 .9 .5 1
 		translate -1.3 .73 -4.83
 		scale .09 .119 .09
@@ -175,6 +197,7 @@ pushTransform
    	popTransform
 
 	pushTransform
+		ambient .8 .1 .8 1
 		diffuse .8 .1 .8 1
 		translate -1.45 .71 -4.83
 		scale .09 .105 .09
@@ -182,6 +205,7 @@ pushTransform
    	popTransform
 
 	pushTransform
+		ambient .5 .8 .8 1
 		diffuse .5 .8 .8 1
 		translate -1.6 .73 -4.83
 		scale .09 .115 .09
@@ -192,8 +216,9 @@ popTransform
 
 # #########################################################################
 #Floor	
-	
+	specular .2 .2 .2 1
 pushTransform
+	ambient .2 .2 .2 1
     diffuse .2 .2 .2 1
 	rotate 20 0 0 40
 	scale 10 .1 8
@@ -205,6 +230,7 @@ popTransform
 # Roof
 
 pushTransform
+	ambient .1 .1 1 1
     diffuse .1 .1 1 1
 	rotate 10 0 0 40
 	translate 0 3.4 0
@@ -216,6 +242,7 @@ popTransform
 
 #Table
 pushTransform
+  ambient 0.623529 0.623529 0.372549 1 
   diffuse 0.623529 0.623529 0.372549 1 
   translate 4.3 0.1 0.2
   
@@ -265,7 +292,7 @@ popTransform
 #Walls
 
 pushTransform
-
+	ambient 0.1 0.1 1 1
     diffuse 0.1 0.1 1 1
     rotate 10 0 0 130
     
@@ -280,7 +307,7 @@ pushTransform
     pushTransform
     	translate 5 0 -1.7
         scale .02 8 3.5
-    	cube 1.0
+    	#cube 1.0
     popTransform
     
     #Back Wall
@@ -294,7 +321,7 @@ pushTransform
     pushTransform
         translate 0 4 -1.7
         scale 10 .02 3.5
-        cube 1.0
+        #cube 1.0
     popTransform
     
 popTransform
@@ -303,8 +330,10 @@ popTransform
 
 #BookShelf
 
+specular 0.7 0.7 0.7 1
 pushTransform
-       diffuse 0 1 0 1
+	   ambient .3 .3 .3 1
+       diffuse .3 .3 .3 1
        rotate 1 0 0 40
 
        # Bottom
@@ -333,7 +362,6 @@ popTransform
 # ##############################################################################
 # Bed   
 pushTransform
-    diffuse 0.623529 0.623529 0.372549 1
     rotate 10 0 0 130
     translate -3.9 -1 -.2
     
@@ -341,6 +369,7 @@ pushTransform
     pushTransform
         # Mattress
         pushTransform
+        	ambient 1 0 0 1
 			specular 1 1 1 1
         	diffuse 1 0 0 1
             scale 2 1 0.25 
@@ -350,6 +379,7 @@ pushTransform
   		
         # Pillow
         pushTransform
+        	ambient 1 1 1 1
         	specular 0 0 0 1
             diffuse 1 1 1 1
             scale .3 .6 .11
@@ -357,6 +387,9 @@ pushTransform
             cube 1.0
         popTransform
     popTransform
+
+    ambient 0.623529 0.623529 0.372549 1 
+    diffuse 0.623529 0.623529 0.372549 1
     
     # BedFrame
     pushTransform
@@ -400,6 +433,7 @@ popTransform
 
 # Ball Switch Off
 pushTransform
+	   ambient 0.923529 0.623529 0.372549 1
        diffuse 0.923529 0.623529 0.372549 1
        rotate 30 0 0 40
        translate 4.94 1.2 1
@@ -409,7 +443,6 @@ popTransform
 
 # Ball Switch On
 pushTransform
-       diffuse 0.923529 0.623529 0.372549 1
        rotate 1 0 .3 40
        translate 4 .6 1.23
        scale 1.1 0.3 0.1
@@ -422,13 +455,16 @@ popTransform
 # Disco Ball zo/
 pushTransform
 	animated
-	diffuse 1 1 1 1
-	shininess 500
+	ambient .1 .1 .1 1
+	specular 1 1 1 1
+	diffuse .1 .1 .1 1
+	shininess 128
 	rotate 1 0 0 40
 	translate 0 3.05 .4
-	#sphere 0.3
+	sphere 0.3
 popTransform
 
+specular 0 0 0 1
 # #########################################################################
 
 # Window
@@ -437,6 +473,7 @@ pushTransform
 	
 	# Window Frame
 	pushTransform
+		ambient 0 1 0 1
 		diffuse 0 1 0 1
 		translate 0 1.4 -4
 		scale 1 1 .025
@@ -445,6 +482,7 @@ pushTransform
 	
 	# Window Vertical Bar
 	pushTransform
+		ambient .5 .5 .5 1
 		specular 1 1 1 1
 		diffuse .5 .5 .5 1
 		translate 0 1.4 -3.97
@@ -454,6 +492,7 @@ pushTransform
 	
 	# Window Horizontal Bar
 	pushTransform
+		ambient .5 .5 .5 1
 		diffuse .5 .5 .5 1
 		translate 0 1.4 -3.97
 		scale 1 0.05 0.025
@@ -471,6 +510,7 @@ pushTransform
 	
 	# Door Frame
 	pushTransform
+		ambient 0 1 0 1
 		diffuse 0 1 0 1
 		translate -0.6 1.05 4
 		scale 1 2 0.025
@@ -479,6 +519,7 @@ pushTransform
 	
 	# Door Knob Outside
 	pushTransform
+		ambient .3 .3 .3 1
 		specular 1 1 1 1
 		diffuse 0.3 0.3 0.3 1
 		translate -0.95 0.9 4.03
@@ -488,6 +529,7 @@ pushTransform
 	
 	# Door Knob Outside
 	pushTransform
+		ambient .3 .3 .3 1
 		diffuse 0.3 0.3 0.3 1
 		translate -0.95 0.9 3.97
 		scale .3 .3 .3
@@ -501,6 +543,7 @@ popTransform
 
 # Chair
  pushTransform 
+  ambient 0.623529 0.623529 0.372549 1
   diffuse 0.623529 0.623529 0.372549 1
   translate 4.3 .29 -0.4
 

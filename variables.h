@@ -19,7 +19,7 @@ EXTERN int indexOfSwitch;
 EXTERN int indexOfObjects;
 EXTERN int switchOnn;
 EXTERN vec3 centerinit ;
-EXTERN int ballIndex;
+//EXTERN int ballIndex;
 EXTERN float ballRot;
 
 EXTERN int amount; // The amount of rotation for each arrow press

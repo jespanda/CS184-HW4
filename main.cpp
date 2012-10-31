@@ -284,7 +284,7 @@ void specialKey(int key, int x, int y) {
 }
 
 void init() {
-      load_obj("book1.obj", book_vertices, book_normals, book_textures, book_elements);
+      load_obj("book.obj", book_vertices, book_normals, book_textures, book_elements);
       // Initialize shaders
       vertexshader = initshaders(GL_VERTEX_SHADER, "shaders/light.vert.glsl") ;
       fragmentshader = initshaders(GL_FRAGMENT_SHADER, "shaders/light.frag.glsl") ;

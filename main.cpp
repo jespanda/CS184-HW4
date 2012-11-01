@@ -280,10 +280,9 @@ void keyboard(unsigned char key, int x, int y) {
 // mouse simply sets state for mousedrag
 void mouse(int button, int state, int x, int y)
 {
-    
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
         if (transop == translate){
-            Transform::left(-amount, eye,  up);
+            Transform::left(amount, eye,  up);
             if (upRotCounter > 0){
                 Transform::up(amount*upRotCounter,eye,up);
                 upRotCounter = 0;
@@ -300,7 +299,7 @@ void mouse(int button, int state, int x, int y)
 	else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN){ 
         
             if (transop == translate){
-          		Transform::left(amount, eye,  up);
+          		Transform::left(-amount, eye,  up);
           		if (upRotCounter > 0){
           			Transform::up(amount*upRotCounter,eye,up);
           			upRotCounter = 0;

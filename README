@@ -33,7 +33,9 @@ Mechanism for getting rid of textures:
 Capabilities:
 ---------------------------------------------------
 Allow the viewer to move about scene:
-    By mouse: true
+    By mouse: 
+        If keyboard is on translate, mouse is on rotate.
+        If keyboard is on rotate, mouse is on translate.
     By keyboard: true
 One object constantly animated: Fish lamp
 User must be able to:

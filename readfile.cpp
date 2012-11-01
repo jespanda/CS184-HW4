@@ -161,12 +161,14 @@ void readfile(const char * filename) {
           }
         }
 		
-		//if (cmd == "animated"){
-			//ballIndex = indexOfObjects + 1;
-			//ballRot = 0;
-	//	}
-	
-	
+		else if (cmd == "animated"){
+			animated = true;
+		}
+		
+		else if (cmd == "nonanimated"){
+			nonanimated = true;
+		}
+		
         // I've left the code for loading objects in the skeleton, so 
         // you can get a sense of how this works.  
         else if (cmd == "sphere" || cmd == "cube" || cmd == "teapot" || cmd == "book" || cmd=="fish") {
@@ -182,9 +184,12 @@ void readfile(const char * filename) {
                 (obj -> diffuse)[i] = diffuse[i] ; 
                 (obj -> specular)[i] = specular[i] ; 
                 (obj -> emission)[i] = emission[i] ;
+                (obj -> animation) = animated;
+                (obj -> nonanimation) = nonanimated;
               }
               obj -> shininess = shininess ; 
-			  
+			  animated = false;
+			  nonanimated = false;
 			  //if (switchOnn == 1){
 			  		//rightmultiply inverse rotation and translation
 			 // }		  

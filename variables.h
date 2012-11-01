@@ -22,6 +22,9 @@ EXTERN vec3 centerinit ;
 //EXTERN int ballIndex;
 EXTERN float ballRot;
 EXTERN bool drawSphere;
+EXTERN bool animated;
+EXTERN bool nonanimated;
+EXTERN bool goanimate;
 
 EXTERN int amount; // The amount of rotation for each arrow press
 EXTERN vec3 eye; // The (regularly updated) vector coordinates of the eye 
@@ -84,6 +87,8 @@ EXTERN struct object {
   GLfloat emission[4] ; 
   GLfloat shininess ;
   mat4 transform ;
+  bool animation;
+  bool nonanimation;
 } objects[maxobjects] ;
 
 // Variables to set uniform params for lighting fragment shader 

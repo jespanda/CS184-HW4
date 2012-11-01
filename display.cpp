@@ -148,6 +148,8 @@ void display() {
 
           // Actually draw the object
           // We provide the actual glut drawing functions for you.  
+          if(((obj -> animation)&&(goanimate))||(obj -> nonanimation)||((!obj->animation)&&(!obj->nonanimation)))
+          {
           if (obj -> type == cube) {
             glutSolidCube(obj->size) ; 
           }
@@ -163,6 +165,7 @@ void display() {
           }
           else if (obj -> type == fish){
               draw_obj(fish_vertices, fish_elements);
+          }
           }
         }
         

@@ -434,20 +434,26 @@ popTransform
 
 # Ball Switch Off
 pushTransform
-	   ambient 0.923529 0.623529 0.372549 1
-       diffuse 0.923529 0.623529 0.372549 1
+	   animated
+	   specular 0 1 1 1
+	   ambient 1 0 0 1
+       diffuse 1 0 0 1
        rotate 30 0 0 40
        translate 4.94 1.2 1
-       scale 1.1 0.3 0.1
+       scale 1.1 1.2 0.9
        cube 0.1
 popTransform
 
 # Ball Switch On
 pushTransform
-       rotate 1 0 .3 40
-       translate 4 .6 1.23
-       scale 1.1 0.3 0.1
-       #cube 0.1
+	   nonanimated
+	   specular 1 1 0 1
+	   ambient 0 1 0 1
+       diffuse 1 1 0 1
+       rotate 30 0 0 40
+       translate 4.94 1.2 1
+       scale 1.1 1.2 0.9
+       cube 0.1
 popTransform       
        
 

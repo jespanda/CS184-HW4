@@ -117,8 +117,8 @@ void printHelp() {
 	    << "press 'i' to run image grader test cases\n"
             << "press 'g' to switch between using glm::lookAt and glm::Perspective or your own LookAt.\n"       
             << "press 'r' to reset the transformations.\n"
-            << "press 'v' 't' 's' to do view [default], translate, scale.\n"
-            << "press 'x' to rotate disco ball"
+            << "press 'v' 't' to do view [default], translate.\n"
+            << "press 'x' to stop fish rotation"
             << "press ESC to quit.\n" ;               
 }
 //############################################################################################################################
@@ -129,22 +129,10 @@ int downRotCounter = 0;
 GLint animate = 0;
 
 void animateBall(void){
-		ballRot += 0.25;
-		glColor3f(0.0,1.0,1.0) ; // Deprecated command to set the color 
-		glPushMatrix() ;
-		//  I now transform by the teapot translation for animation 
-		
-		//  The following two transforms set up and center the teapot 
-		//  Remember that transforms right-multiply the stack 
-
-		glTranslatef(0.0,0.0,0.1) ;
-		glRotatef(ballRot, 0.0, 0.0, 1.0);
-		glRotatef(90.0,1.0,0.0,0.0) ;
-		glutSolidSphere(2,20,20) ;
-		glPopMatrix() ;
-		glFlush ();
-		//glutSwapBuffers() ; 
-        glutPostRedisplay();
+		if(drawSphere){
+			ballRot += 0.25;
+        	glutPostRedisplay();
+        }	
 }
 //############################################################################################################################
 void keyboard(unsigned char key, int x, int y) {
@@ -215,9 +203,11 @@ void keyboard(unsigned char key, int x, int y) {
 				center = center + vec3(0.1,0,0);
 				break;		            	
         case 'x':
-        		animate = !animate ;
-				if (animate) glutIdleFunc(animateBall) ;
-				else glutIdleFunc(NULL) ;		
+        		//animate = !animate ;
+				//if (animate) glutIdleFunc(animateBall) ;
+//				else glutIdleFunc(NULL) ;		
+				if (drawSphere) drawSphere = false;
+				else drawSphere = true;
         		break;
         case 'p':
         		//if (switchOnn == 0) switchOnn = 1;
@@ -330,6 +320,8 @@ int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 //############################################################################################################################
 	switchOnn = 0;
+	ballRot = 1.0;
+	drawSphere = true;
 //############################################################################################################################	
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutCreateWindow("HW4: Scene Viewer");
@@ -339,6 +331,7 @@ int main(int argc, char* argv[]) {
 	glutSpecialFunc(specialKey);
 	glutKeyboardFunc(keyboard);
 	glutReshapeFunc(reshape);
+	glutIdleFunc(animateBall) ;
 	glutReshapeWindow(w, h);
 
 	if (argc > 2) {

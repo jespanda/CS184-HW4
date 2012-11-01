@@ -1,9 +1,9 @@
 # Set the scene size and camera location 
 size 1500 1500
 
-camera 5 -5 9 0 0 0 0 1 1 26.0 #camera outside the room
+#camera 5 -5 9 0 0 0 0 1 1 26.0 #camera outside the room
 
-#camera 0 -1 1 0 0 0 0 1 1 26.0  #camera inside the room
+camera 0 -1 1 0 0 0 0 1 1 26.0  #camera inside the room
 
 # lights
 
@@ -28,11 +28,7 @@ pushTransform
   shininess 100
   translate 0 -1 0
   specular 0 0 0 1
-# ########################################################################
-pushTransform
-    rotate 10 0 0 40
-    fish 1.0
-popTransform
+
 # ########################################################################
 # Books
 pushTransform
@@ -240,7 +236,7 @@ pushTransform
 	rotate 10 0 0 40
 	translate 0 3.4 0
 	scale 10 .1 8
-	#cube 1.0
+	cube 1.0
 popTransform
 	
 # ##########################################################################
@@ -312,14 +308,14 @@ pushTransform
     pushTransform
     	translate 5 0 -1.7
         scale .02 8 3.5
-    	#cube 1.0
+    	cube 1.0
     popTransform
     
     #Back Wall
     pushTransform
         translate 0 -4 -1.7
         scale 10 .02 3.5
-        #cube 1.0
+        cube 1.0
     popTransform
     
     #Front Wall
@@ -464,7 +460,7 @@ pushTransform
 	diffuse .1 .1 .1 1
 	shininess 128
 	rotate 1 0 0 40
-	translate 0 3.05 .4
+	translate 0 1.05 -.8
 	sphere 0.3
 popTransform
 
@@ -545,6 +541,18 @@ popTransform
 
 # #########################################################################
 
+# String
+	pushTransform
+		ambient .1 .1 .1 1
+		diffuse .1 .1 .1 1
+		rotate 10 0 0 40
+		translate 4.5 2.3 -.3
+		scale .01 2.3 .01
+		cube 1.0
+	popTransform
+
+# #########################################################################
+
 # Chair
  pushTransform 
   ambient 0.623529 0.623529 0.372549 1
@@ -598,6 +606,10 @@ popTransform
        scale 0.05 0.05 .4
        cube 1.0 
   popTransform
+
+pushTransform
+	translate -2.0 0 0
+popTransform
 
 popTransform
 

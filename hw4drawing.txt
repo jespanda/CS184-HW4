@@ -462,7 +462,7 @@ pushTransform
 	   nonanimated
 	   specular 1 1 0 1
 	   ambient 0 1 0 1
-       diffuse 1 1 0 1
+       diffuse 0 1 0 1
        rotate 30 0 0 40
        translate 4.94 1.2 1
        scale 1.1 1.2 0.9

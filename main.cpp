@@ -19,7 +19,7 @@ using namespace std ;
 #include "readfile.h" // prototypes for readfile.cpp  
 
 int mouseoldx, mouseoldy ;
-GLdouble eyeloc = 1.0 ;
+GLdouble eyeloc = 5.0 ;
 void display(void) ;  // prototype for display function. 
 
 Grader grader;
@@ -280,22 +280,52 @@ void keyboard(unsigned char key, int x, int y) {
 // mouse simply sets state for mousedrag
 void mouse(int button, int state, int x, int y)
 {
-	if (button == GLUT_LEFT_BUTTON) {
-		if (state == GLUT_UP) {
-			// Do Nothing ;
-		}
-		else if (state == GLUT_DOWN) {
-			mouseoldx = x ; mouseoldy = y ; // so we can move wrt x , y
-		}
+    
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+        if (transop == translate){
+            Transform::left(-amount, eye,  up);
+            if (upRotCounter > 0){
+                Transform::up(amount*upRotCounter,eye,up);
+                upRotCounter = 0;
+            }
+            if (downRotCounter > 0){
+                Transform::up(-(amount*downRotCounter),eye,up);
+                downRotCounter = 0;
+            }
+            
+        }
+        //else if (transop == scale) sx += amount * 0.01 ;
+        else if (transop == view) tx += amount * 0.01 ;
 	}
-	else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
-	{ // Reset gluLookAt
-		eyeloc = 2.0 ;
-		glMatrixMode(GL_MODELVIEW) ;
-		glLoadIdentity() ;
-		gluLookAt(0,-eyeloc,eyeloc,0,0,0,0,1,1) ;
-		glutPostRedisplay() ;
+	else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN){ 
+        
+            if (transop == translate){
+          		Transform::left(amount, eye,  up);
+          		if (upRotCounter > 0){
+          			Transform::up(amount*upRotCounter,eye,up);
+          			upRotCounter = 0;
+          		}
+          		if (downRotCounter > 0){
+          			Transform::up(-(amount*downRotCounter),eye,up);
+          			downRotCounter = 0;
+          		}
+            }
+            //   else if (transop == scale) sx -= amount * 0.01 ;
+            else if (transop == view) tx -= amount * 0.01 ;
 	}
+    else if (button == GLUT_MIDDLE_BUTTON && state == GLUT_DOWN){// Reset gluLookAt
+        eye = eyeinit ;
+        up = upinit ;
+        center = centerinit;
+        upRotCounter = 0;
+        downRotCounter = 0;
+        Transform::up(amount,  eye,  up);
+        Transform::left(amount*18, eye,  up);
+        ty = 0 - ((amount * 0.01)*3 );
+        sx = sy = 1.0 ;
+        tx = 0.0 ;
+
+    }
 }
 
 void mousedrag(int x, int y) {
@@ -345,7 +375,7 @@ void specialKey(int key, int x, int y) {
 		  	}
           }
 //############################################################################################################################          		
-         // else if (transop == scale) sy += amount * 0.01 ; 
+          else if (transop == scale) sy += amount * 0.01 ; 
           else if (transop == translate) ty += amount * 0.01 ; 
           break;
           
@@ -362,7 +392,7 @@ void specialKey(int key, int x, int y) {
           		}
 
           }		
-      //    else if (transop == scale) sx += amount * 0.01 ; 
+          else if (transop == scale) sx += amount * 0.01 ; 
           else if (transop == translate) tx += amount * 0.01 ; 
           break;
           
@@ -388,7 +418,6 @@ void init() {
       load_obj("book.obj", book_vertices, book_normals, book_textures, book_elements);
 
       carpetTexture = load_texture("carpet.raw", 256, 256);
-        std::cout << "carpetTexture: " << carpetTexture << "\n";
       // Initialize shaders
       vertexshader = initshaders(GL_VERTEX_SHADER, "shaders/light.vert.glsl") ;
       fragmentshader = initshaders(GL_FRAGMENT_SHADER, "shaders/light.frag.glsl") ;
@@ -422,7 +451,8 @@ int main(int argc, char* argv[]) {
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutCreateWindow("HW4: Scene Viewer");
 	init();
-        readfile(argv[1]) ; 
+        readfile(argv[1]) ;
+    //define callbacks and function for various tasks
 	glutDisplayFunc(display);
 	glutSpecialFunc(specialKey);
 	glutKeyboardFunc(keyboard);

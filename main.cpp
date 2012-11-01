@@ -170,7 +170,7 @@ void printHelp() {
             << "press 'g' to switch between using glm::lookAt and glm::Perspective or your own LookAt.\n"       
             << "press 'r' to reset the transformations.\n"
             << "press 'v' 't' to do view [default], translate.\n"
-            << "press 'x' to stop fish rotation"
+            << "press 'x' to stop fish rotation.\n"
             << "press ESC to quit.\n" ;               
 }
 //############################################################################################################################
@@ -260,6 +260,8 @@ void keyboard(unsigned char key, int x, int y) {
 //				else glutIdleFunc(NULL) ;		
 				if (drawSphere) drawSphere = false;
 				else drawSphere = true;
+				if (goanimate) goanimate = false;
+				else goanimate = true;
         		break;
         case 'p':
         		//if (switchOnn == 0) switchOnn = 1;
@@ -415,6 +417,7 @@ int main(int argc, char* argv[]) {
 	switchOnn = 0;
 	ballRot = 1.0;
 	drawSphere = true;
+	goanimate = false;
 //############################################################################################################################	
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutCreateWindow("HW4: Scene Viewer");

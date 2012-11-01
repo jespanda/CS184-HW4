@@ -1,10 +1,10 @@
-README for Jessica Pan and Eber Peretto
+README for Jessica Pan (cs184-ez) and Eber Peretto (cs184-db)
 URL: http://www-inst.eecs.berkeley.edu/~cs184-ez/hw4.html
 
 Minimum requirements
 ===================================================
 Object created by hand:
-    The cup on the table
+    The yellow carpet in the middle of the room.
 Object loaded from a suitable format: 
     We have included a book.obj and fish.obj
 
@@ -25,7 +25,7 @@ At least half of the objects must have correct normals:
 Double buffering:
     I think we used this
 Hidden surface elimination:
-    True
+    Things that are not seen are not drawn
 Perspective projection: 
     Able to move around the scene
 Mechanism for getting rid of textures: 

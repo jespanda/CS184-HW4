@@ -415,7 +415,7 @@ void specialKey(int key, int x, int y) {
 void init() {
       load_obj("fish.obj", fish_vertices, fish_normals, fish_textures, fish_elements);
       load_obj("book.obj", book_vertices, book_normals, book_textures, book_elements);
-
+      load_obj("handDrawn.obj", hand_vertices, hand_normals, hand_textures, hand_elements);
       //carpetTexture = load_texture("carpet.raw", 256, 256);
       // Initialize shaders
       vertexshader = initshaders(GL_VERTEX_SHADER, "shaders/light.vert.glsl") ;

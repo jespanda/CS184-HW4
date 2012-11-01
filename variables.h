@@ -39,6 +39,11 @@ EXTERN vector<vec4> fish_vertices;
 EXTERN vector<vec3> fish_normals;
 EXTERN vector<glm::vec2> fish_textures;
 EXTERN vector<GLushort> fish_elements;
+//handDrawn 
+EXTERN vector<vec4> hand_vertices;
+EXTERN vector<vec3> hand_normals;
+EXTERN vector<glm::vec2> hand_textures;
+EXTERN vector<GLushort> hand_elements;
 //Carpet Texture
 EXTERN GLuint carpetTexture;
 #ifdef MAINPROGRAM
@@ -58,7 +63,7 @@ EXTERN float fovy ;
 EXTERN bool useGlu; // Toggle use of "official" opengl/glm transform vs user 
 EXTERN GLuint vertexshader, fragmentshader, shaderprogram ; // shaders
 static enum {view, translate, scale} transop ; // which operation to transform 
-enum shape {cube, sphere, teapot, book, fish} ;
+enum shape {cube, sphere, teapot, book, fish, hand} ;
 EXTERN float sx, sy, sz ; // the scale in x and y
 EXTERN float tx, ty, tz ; // the translation in x and y
 

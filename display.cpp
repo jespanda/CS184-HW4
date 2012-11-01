@@ -19,6 +19,9 @@ using namespace std ;
 #include "variables.h"
 #include "readfile.h"
 
+
+
+
 // objLoader (from wiki)
 
 void drawTriangle (vec4 a, vec4 b, vec4 c){
@@ -166,9 +169,24 @@ void display() {
           else if (obj -> type == fish){
               draw_obj(fish_vertices, fish_elements);
           }
+          else if (obj -> type == hand){
+              draw_obj(hand_vertices, hand_elements);
+          }
           }
         }
-            
+            //Hand drawn object
+            glPushMatrix();
+            glColor3f(.5, .5, 1);
+            glScalef(5,8,1);
+            glTranslatef(0.0,0.0,-3) ;
+            glRotatef(ballRot, 0.0, 0.0, 40.0);
+            glRotatef(90.0,-1.0,0.0,0.0) ;
+            glEnable(GL_TEXTURE_2D);
+            draw_obj(hand_vertices, hand_elements) ;
+            glDisable(GL_TEXTURE_2D);
+            glPopMatrix();
+            glFlush;
+    
     		glPushMatrix() ;
     		glColor3f(1, 1, 1);
     		glScalef(5,8,1);

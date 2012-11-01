@@ -3,32 +3,46 @@ README for Jessica Pan and Eber Peretto
 Minimum requirements
 ===================================================
 Object created by hand:
-Object loaded from a suitable format:
-All placement and scaling by hand:
-Two objects must be textured with a suitable image:
+    The cup on the table
+Object loaded from a suitable format: 
+    We have included a book.obj and fish.obj
+
+All placement and scaling by hand: 
+    In hw4drawing.txt, we specify where each object is supposed to go
+Two objects must be textured with a suitable image: 
+    We were unable to get texturing to work
 One shiny object:
+    Mattress, doorknob
 One dull object:
+    book and chair
 One directional light:
-One object instantiated more than once:
-At least half of the objects must have correct normals:
+    On the top and two coming from the disco ball
+One object instantiated more than once: 
+    We have multiple books
+At least half of the objects must have correct normals: 
+    True
 Double buffering:
+    I think we used this
 Hidden surface elimination:
-Perspective projection:
-Mechanism for getting rid of textures:
+    True
+Perspective projection: 
+    Able to move around the scene
+Mechanism for getting rid of textures: 
+    Unable to get texture to work so we were unable to implement this
 
 Capabilities:
 ---------------------------------------------------
 Allow the viewer to move about scene:
-    By mouse:
-    By keyboard:
-One object constantly animated:
+    By mouse: true
+    By keyboard: true
+One object constantly animated: Fish lamp
 User must be able to:
-    move forward:
-    move backward:
-    zoom:
-    translate:
-    use mouse:
-    use keyboard:
+    move forward: true
+    move backward: true
+    zoom: true
+    translate: true
+    use mouse: true
+    use keyboard: true
     
 Extra Credit
 ====================================================

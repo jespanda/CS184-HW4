@@ -36,6 +36,8 @@ EXTERN vector<vec4> fish_vertices;
 EXTERN vector<vec3> fish_normals;
 EXTERN vector<glm::vec2> fish_textures;
 EXTERN vector<GLushort> fish_elements;
+//Carpet Texture
+EXTERN GLuint carpetTexture;
 #ifdef MAINPROGRAM
 vec3 eyeinit(0.0,0.0,5.0) ; // Initial eye position, also for resets
 vec3 upinit(0.0,1.0,0.0) ; // Initial up position, also for resets

@@ -17,6 +17,9 @@ using namespace std ;
 #define MAINPROGRAM 
 #include "variables.h" 
 #include "readfile.h" // prototypes for readfile.cpp  
+
+int mouseoldx, mouseoldy ;
+GLdouble eyeloc = 1.0 ;
 void display(void) ;  // prototype for display function. 
 
 Grader grader;
@@ -95,7 +98,56 @@ void load_obj(const char* filename, vector<glm::vec4> &vertices, vector<glm::vec
     }
 }
 
-//texture loader
+//load texture
+GLuint load_texture(const char *filename, int width, int height)
+{
+    GLuint texture;
+    unsigned char *data;
+    FILE *file;
+    
+    // open texture data
+    file = fopen(filename, "rb");
+    if (file == NULL) return 0;
+    
+    // allocate buffer
+    data = (unsigned char*) malloc(width * height * 4);
+    
+    // read texture data
+    fread(data, width * height * 4, 1, file);
+    fclose(file);
+    
+    // allocate a texture name
+    glGenTextures(1, &texture);
+    
+    // select our current texture
+    glBindTexture(GL_TEXTURE_2D, texture);
+    
+    // select modulate to mix texture with color for shading
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_DECAL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_DECAL);
+    
+    // when texture area is small, bilinear filter the closest mipmap
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+    // when texture area is large, bilinear filter the first mipmap
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    // texture should tile
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    
+    // build our texture mipmaps
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
+    
+    // free buffer
+    free(data);
+    
+    return texture;
+}
+
+
+//Original code
 
 void saveScreenshot(string fname) {
 	int pix = w * h;
@@ -219,6 +271,46 @@ void keyboard(unsigned char key, int x, int y) {
 	glutPostRedisplay();
 }
 
+//Adding mouse
+// Defines a Mouse callback to zoom in and out
+// This is done by modifying gluLookAt
+// The actual motion is in mousedrag
+// mouse simply sets state for mousedrag
+void mouse(int button, int state, int x, int y)
+{
+	if (button == GLUT_LEFT_BUTTON) {
+		if (state == GLUT_UP) {
+			// Do Nothing ;
+		}
+		else if (state == GLUT_DOWN) {
+			mouseoldx = x ; mouseoldy = y ; // so we can move wrt x , y
+		}
+	}
+	else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
+	{ // Reset gluLookAt
+		eyeloc = 2.0 ;
+		glMatrixMode(GL_MODELVIEW) ;
+		glLoadIdentity() ;
+		gluLookAt(0,-eyeloc,eyeloc,0,0,0,0,1,1) ;
+		glutPostRedisplay() ;
+	}
+}
+
+void mousedrag(int x, int y) {
+	int yloc = y - mouseoldy  ;    // We will use the y coord to zoom in/out
+	eyeloc  += 0.005*yloc ;         // Where do we look from
+	if (eyeloc < 0) eyeloc = 0.0 ;
+	mouseoldy = y ;
+    
+	/* Set the eye location */
+	glMatrixMode(GL_MODELVIEW) ;
+	glLoadIdentity() ;
+	gluLookAt(0,-eyeloc,eyeloc,0,0,0,0,1,1) ;
+    
+	glutPostRedisplay() ;
+}
+
+
 //  You will need to enter code for the arrow keys 
 //  When an arrow key is pressed, it will call your transform functions
 
@@ -293,7 +385,8 @@ void init() {
       load_obj("fish.obj", fish_vertices, fish_normals, fish_textures, fish_elements);
       load_obj("book.obj", book_vertices, book_normals, book_textures, book_elements);
 
-      //load_texture("wood.ppm", shaderprogram);
+      carpetTexture = load_texture("carpet.raw", 256, 256);
+        std::cout << "carpetTexture: " << carpetTexture << "\n";
       // Initialize shaders
       vertexshader = initshaders(GL_VERTEX_SHADER, "shaders/light.vert.glsl") ;
       fragmentshader = initshaders(GL_FRAGMENT_SHADER, "shaders/light.frag.glsl") ;
@@ -333,6 +426,8 @@ int main(int argc, char* argv[]) {
 	glutReshapeFunc(reshape);
 	glutIdleFunc(animateBall) ;
 	glutReshapeWindow(w, h);
+    glutMouseFunc(mouse) ;
+	glutMotionFunc(mousedrag);
 
 	if (argc > 2) {
 		allowGrader = true;

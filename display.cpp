@@ -165,17 +165,32 @@ void display() {
               draw_obj(fish_vertices, fish_elements);
           }
         }
-        
+            
     		glPushMatrix() ;
     		glColor3f(1, 1, 1);
     		glScalef(5,8,1);
 			glTranslatef(0.0,0.0,-3) ;
 			glRotatef(ballRot, 0.0, 0.0, 40.0);
 			glRotatef(90.0,-1.0,0.0,0.0) ;
+            glEnable(GL_TEXTURE_2D);
 			draw_obj(fish_vertices, fish_elements) ;
+            glDisable(GL_TEXTURE_2D);
 			glPopMatrix() ;
 			glFlush ();
 			
+            glPushMatrix() ;
+            glColor3f(.5, .5, .5);
+            glScalef(5,8,1);
+            glTranslatef(0.0,0.0,-3) ;
+            glRotatef(ballRot, 0.0, 0.0, 40.0);
+            glRotatef(90.0,-1.0,0.0,0.0) ;
+            glEnable(GL_TEXTURE_2D);
+            draw_obj(fish_vertices, fish_elements) ;
+            glDisable(GL_TEXTURE_2D);
+            glPopMatrix() ;
+            glFlush ();
+    
+    
         //transf = mv*tr*sc;
         //glLoadMatrixf(&transf[0][0]) ;
         //draw_obj(book_vertices, book_elements);

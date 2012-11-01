@@ -416,7 +416,7 @@ void init() {
       load_obj("fish.obj", fish_vertices, fish_normals, fish_textures, fish_elements);
       load_obj("book.obj", book_vertices, book_normals, book_textures, book_elements);
 
-      carpetTexture = load_texture("carpet.raw", 256, 256);
+      //carpetTexture = load_texture("carpet.raw", 256, 256);
       // Initialize shaders
       vertexshader = initshaders(GL_VERTEX_SHADER, "shaders/light.vert.glsl") ;
       fragmentshader = initshaders(GL_FRAGMENT_SHADER, "shaders/light.frag.glsl") ;
